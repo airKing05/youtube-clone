@@ -1,5 +1,6 @@
 import React from 'react';
 import { UilSearch } from '@iconscout/react-unicons'
+import VideoCard1 from '../Components/VideoCard1';
 
 export default function Search() {
   return (
@@ -8,6 +9,8 @@ export default function Search() {
         <input type="text" class="form-control" placeholder="search by username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
         <span class="input-group-text" id="basic-addon2"><UilSearch/></span>
       </div>
+
+      <VideoCard1/>
     </div>
   )
 }
