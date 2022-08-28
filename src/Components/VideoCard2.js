@@ -1,5 +1,4 @@
 import React from 'react';
-import { UilCheckCircle } from '@iconscout/react-unicons';
 
 export default function VideoCard2() {
     return (
