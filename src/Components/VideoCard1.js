@@ -1,6 +1,7 @@
 import React from 'react';
 //import { DateTime } from "luxon";
 import { UilCheckCircle } from '@iconscout/react-unicons';
+import FavIcon from "./FavIcon";
 
 
 
@@ -12,8 +13,11 @@ export default function VideoCard1({snippet}) {
     return (
         <>
             <div className='row my-3'>
-                <div className='col-md-4'>
+                <div className='col-md-4 position-relative'>
                     <img src={thumbnails.high.url} className='img-fluid' alt='thumbnail' />
+                    <span className='position-absolute' style={{ top: '1%', right: '5%' }}>
+                        <FavIcon/>
+                    </span>
                 </div>
                 <div className='col-md-8 text-start d-none d-md-block'>
                     <h4 className='fs-5 fw-bolder'>{title}</h4>

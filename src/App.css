@@ -6,4 +6,12 @@
 .form-control:focus {
   box-shadow: none;
 }
+.nav-link:hover, .nav-link:active{
+  font-size: 18px;
+  transition: 0.5s ease;
+  color: red;
+  padding: 6px 0px;
+   
+  
+}
 /* bootstrap customize css */
