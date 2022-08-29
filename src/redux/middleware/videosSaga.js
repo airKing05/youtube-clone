@@ -1,36 +1,39 @@
-import { SEARCH_CHANNEL, SET_VIDEOS_LIST, VIDEOS_LIST } from "../constants/constants";
+import { SEARCH_CHANNEL, SET_VIDEOS_LIST, SET_CHANNEL_DATA, SET_VIDEO_STATICS } from "../constants/constants";
 import { takeEvery, put } from "redux-saga/effects";
 
 const KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = 'https://www.googleapis.com/youtube/v3';
+let resSearch = '';
+
 
 function* searchChannel(searchInput){
+
+    // getting the search video data
     const type = "video";
-    const part = "snippet";
+    const partSearch = "snippet";
     let query = encodeURI(searchInput.payload).toLowerCase();
-    let url = BASE_URL + "/search" + "?key=" + KEY + "&q=" + query + "&type=" + type + "&part=" + part
-    console.log("URL ___________", url);
-    let searchResult = yield fetch(url);
+    let searchDataApiUrl = BASE_URL + "/search" + "?key=" + 'AIzaSyAvudCPRsAqikw6eTPHaPAi7fm29 - aig - 8' + "&q=" + query + "&type=" + type + "&part=" + partSearch
+    console.log("URL ___________", searchDataApiUrl);
+    let searchResult = yield fetch(searchDataApiUrl);
     searchResult = yield searchResult.json();
- 
+   // yield put({ type: 'SET_CHANNEL_ID', payload: { id: searchResult.items[0].snippet.channelId } })    
     yield put({ type: SET_VIDEOS_LIST, payload: searchResult.items })
+
+    // get channel data 
+    const channelId = searchResult.items[0].snippet.channelId;
+    const partChannel = "snippet,contentDetails,statistics";
+    const channelDataApiUrl = BASE_URL + "/channels" + "?key=" + KEY + "&part=" + partChannel + "&id=" + channelId;
+    let channelDataApiResult = yield fetch(channelDataApiUrl);
+    channelDataApiResult = yield channelDataApiResult.json();
+    // console.log('channel data');
+    // console.log(channelDataApiResult);
+    // console.log('channel data');
+    yield put({ type: SET_CHANNEL_DATA, payload: channelDataApiResult })
 }
+
 
 function* videoDataSaga(){
     yield takeEvery(SEARCH_CHANNEL, searchChannel)
 }
-
-// function* searchProducts(searchItem) {
-//     let searchResult = yield fetch(`http://localhost:3001/products?q=${searchItem.payload}`);
-//     searchResult = yield searchResult.json();
-//     console.log("api called in saga for searchResult", searchResult)
-//     yield put({ type: SET_PRODUCT_LIST, payload: searchResult })
-// }
-
-// function* productSaga() {
-//     yield takeEvery(PRODUCT_LIST, getProducts);
-//     yield takeEvery(SEARCH_PRODUCT, searchProducts)
-// };
-
 
 export default videoDataSaga;
