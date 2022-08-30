@@ -11,7 +11,7 @@ function* searchChannel(searchInput){
     // getting the search video data
     const type = "video";
     const partSearch = "snippet";
-    const maxResults = 10;
+    const maxResults = 50;
     let query = encodeURI(searchInput.payload).toLowerCase();
     let searchDataApiUrl = BASE_URL + "/search" + "?key=" + KEY + "&q=" + query + "&type=" + type + "&part=" + partSearch + "&maxResults=" + maxResults
     //console.log("URL ___________", searchDataApiUrl);

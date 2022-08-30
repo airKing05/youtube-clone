@@ -60,7 +60,7 @@ export default function Search() {
       </div>
       <hr />
       {
-        channelData[0] ? <ChannelSummary channelInfo={channelData} /> : <h4 className='fs-4 text-danger'>Search Channel Name</h4>
+        channelData[0] && channelData[0].snippet ? <ChannelSummary channelInfo={channelData} /> : <h4 className='fs-4 text-danger'>Search Channel Name</h4>
       }
     
       <hr />

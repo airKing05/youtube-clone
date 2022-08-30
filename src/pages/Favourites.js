@@ -19,7 +19,7 @@ export default function Favourites() {
             statistics, videoData
           } = videoDetails[0];
           return <VideoCard1 key={index} videoData={videoData} isDeleteActionEnabled = {true} />
-        }) : <Link to='/search' className="fs-4 fw-normal text-decoration-none"> <UilArrowLeft/> add video to favorites list</Link>
+        }) : <Link to='/' className="fs-4 fw-normal text-decoration-none"> <UilArrowLeft/> add video to favorites list</Link>
       }
       
     </div>

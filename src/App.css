@@ -9,12 +9,13 @@
 .nav-link:hover, .nav-link:active{
   font-size: 18px;
   transition: 0.5s ease;
-  color: red;
+  color: red !important;
   padding: 6px 0px;
 }
 .control-over-flow{
     height: 70px;
     font-size: 50px;
+    font-weight: 800;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
