@@ -1,70 +1,113 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Youtube Clone
 
-## Available Scripts
+This Web App is clone some small part of Youtube.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Search Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Search by Channel Name 
+- Channel Data -  subscriber, total videos
+- List of video from searched channel name
+- Can Add video as Favourites List 
+- Can be remove all t
 
-### `npm test`
+## Favourite List Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Can remove selected video from the favourite lsit
 
-### `npm run build`
+## Stats
+- Basic Inforamtion about the channel -subscriber, total videos
+- Favourites Videos data - total likes of all videos, total views of all videos
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## UI 
+- All the web pages are Fully resposive if streach the size of webpage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## API
+**Search Api**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Will get the video list of video by Channel Name
 
-### `npm run eject`
+**Channel**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Will get the channel data by Channel id
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Video Api**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Will get the video's statistics of by video id
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Tech Stack
 
-### Code Splitting
+**Client:** React, Redux, BootStap, CSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Installation
 
-### Making a Progressive Web App
+Install **ecom-products-review** with npm
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+  npm install my-project
+  cd my-project
+```
+    
+## Run Locally
 
-### Advanced Configuration
+Clone the project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+  https://github.com/airKing05/youtube-clone.git
+```
 
-### Deployment
+Go to the project directory
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+  cd youtube-clone
+```
 
-### `npm run build` fails to minify
+Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+  npm install
+```
+
+Create **.env** file in root folder add youtube api KEY 
+like-
+
+```bash
+REACT_APP_API_KEY = "AIzaSyAvudCPEXfyursw6eTPHaPAi7fm29-aig-8"
+```
+
+**Start the frontend/Rectjs**
+
+```bash
+  npm start
+```
+
+## Screenshots
+
+### small device views
+- Seach by Cahnnel Name
+![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.47.43%20PM.png?raw=true)
+
+- Favourites List data
+![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.48.48%20PM.png?raw=true)
+
+- Sate Info 
+![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.49.02%20PM.png?raw=true)
+
+### Desktop views
+
+
+- Search
+![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.56.50%20PM.png?raw=true)
+
+- Favourites list which is also contianed the older search favourites data 
+![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.58.22%20PM.png?raw=true)
+
+- Sate Info with all the older data also
+![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.58.53%20PM.png?raw=true)
