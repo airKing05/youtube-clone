@@ -34,7 +34,7 @@ export default function Stats() {
     for (let i = 0; i < favouriteVideosList.length; i++) {
       likesCount += parseInt(favouriteVideosList[i][0]['statistics'].likeCount);
     }
-    return likesCount;
+    return likesCount/1000;
   }
 
   function getAvgViewCountByFavourites() {
@@ -43,7 +43,7 @@ export default function Stats() {
     for (let i = 0; i < favouriteVideosList.length; i++) {
       viewsCount += parseInt(favouriteVideosList[i][0]['statistics'].viewCount);
     }
-    return Math.floor(viewsCount / favouritesCount);
+    return (Math.floor(viewsCount / favouritesCount))/1000;
   }
 
 
@@ -62,10 +62,10 @@ export default function Stats() {
        
            </div>
         <div className='col-md-5 border shadow-lg p-3 mb-5 bg-body rounded'>
-          <h4 className='mb-4'>favourites data </h4>
+          <h4 className='mb-4'>Favourites data </h4>
           <h6> Total Videos in Favourite list: {favouriteVideosList.length}</h6>
-          <h6> Sum of likes count of all videos in the Favourite list : {getTotalLikeCountByFavourites()}</h6>
-          <h6>Average Views of all videos in the Favourite list : {getAvgViewCountByFavourites()}</h6>
+          <h6> Total likes of Favourits List : {getTotalLikeCountByFavourites()} K</h6>
+          <h6>Average Views of Favourits List : {getAvgViewCountByFavourites()} K</h6>
         </div>
 
       </div>

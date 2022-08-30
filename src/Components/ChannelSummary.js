@@ -28,7 +28,7 @@ export default function ChannelSummary(props) {
                     &nbsp;
                     &#x2022;
                     &nbsp;
-                    <span>{statistics && statistics.viewCount} Total views</span>
+                    <span>{statistics && (statistics.viewCount)/1000}K Total views</span>
                 </div>
                 <div className='d-none d-md-block'>
                     <p className='fs-6 normal text-wrap text-muted control-over-flow'>{snippet && snippet.description}</p>
