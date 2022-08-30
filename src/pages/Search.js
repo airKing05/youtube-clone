@@ -13,7 +13,6 @@ export default function Search() {
   const dispatch = useDispatch();
    
 
-  console.log("api key ", process.env.REACT_APP_API_KEY)
 
   // function handleChange(e) {
   //   console.log(e.target.value)
@@ -21,7 +20,7 @@ export default function Search() {
 
   // get video data from search channel
   const videosList = useSelector((state) => state.videosData);
-  console.log("VIDEOS LIST", videosList)
+  //console.log("VIDEOS LIST", videosList)
   if (list !== videosList) {
     setList(videosList);
   }
@@ -33,32 +32,25 @@ export default function Search() {
     setChannelData(channelInfo)
   }
 
-  // get video info statics
-  const videoStatics = useSelector((state) => state.videosData);
-  console.log("VIDEOS LIST", videosList)
-  if (list !== videosList) {
-    setList(videosList);
-  }
-
   // send channel name to get video data from search channel
   function handleSearch() {
-    //console.log(inputElement.current.value)
-   dispatch(searchChannel(inputElement.current.value))
+    console.log(inputElement.current.value)
+    dispatch(searchChannel(inputElement.current.value) )
   }
 
   return (
     <div className='container border' style={{ maxWidth: "1000px" }}>
       <div className="input-group my-5 d-flex mx-auto" style={{ maxWidth: "500px" }}>
         <input
-         // minLength={2}
-         // debounceTimeout={1000}
+          //minLength={2}
+          //debounceTimeout={1000}
           type="text"
           className="form-control"
           placeholder="search by username"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           ref = {inputElement}
-          onChange={(e) => { console.log(e.target.value)}}
+          //onChange={(e) => { console.log(e.target.value)}}
         />
         <span
           className="input-group-text"

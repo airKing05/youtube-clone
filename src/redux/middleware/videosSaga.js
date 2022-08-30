@@ -1,19 +1,20 @@
-import { SEARCH_CHANNEL, SET_VIDEOS_LIST, SET_CHANNEL_DATA, SET_VIDEO_STATICS } from "../constants/constants";
+import { SEARCH_CHANNEL, SET_VIDEOS_LIST, SET_CHANNEL_DATA} from "../constants/constants";
 import { takeEvery, put } from "redux-saga/effects";
 
 const KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = 'https://www.googleapis.com/youtube/v3';
-let resSearch = '';
+
 
 
 function* searchChannel(searchInput){
-
+    console.log("searchInput", searchInput)
     // getting the search video data
     const type = "video";
     const partSearch = "snippet";
+    const maxResults = 10;
     let query = encodeURI(searchInput.payload).toLowerCase();
-    let searchDataApiUrl = BASE_URL + "/search" + "?key=" + 'AIzaSyAvudCPRsAqikw6eTPHaPAi7fm29 - aig - 8' + "&q=" + query + "&type=" + type + "&part=" + partSearch
-    console.log("URL ___________", searchDataApiUrl);
+    let searchDataApiUrl = BASE_URL + "/search" + "?key=" + KEY + "&q=" + query + "&type=" + type + "&part=" + partSearch + "&maxResults=" + maxResults
+    //console.log("URL ___________", searchDataApiUrl);
     let searchResult = yield fetch(searchDataApiUrl);
     searchResult = yield searchResult.json();
    // yield put({ type: 'SET_CHANNEL_ID', payload: { id: searchResult.items[0].snippet.channelId } })    

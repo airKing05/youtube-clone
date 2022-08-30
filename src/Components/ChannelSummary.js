@@ -3,7 +3,7 @@ import { UilCheckCircle, UilBell } from '@iconscout/react-unicons';
 import { Link } from 'react-router-dom';
 
 export default function ChannelSummary(props) {
-    console.log("PROPSMOF HASSSSS", props);
+    //console.log("PROPSMOF HASSSSS", props);
     const { snippet, statistics } = props.channelInfo[0];
     // const { title, description, thumbnails } = snippet;
     // const { subscriberCount, videoCount, viewCount } = statistics

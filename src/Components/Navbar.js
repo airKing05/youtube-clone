@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
       <nav className="navbar navbar-expand-lg bg-light">
           <div className="container-fluid mx-2">
-              <NavLink className="navbar-brand" to="/"><UilYoutube color='red' size={45}/></NavLink>
+              <NavLink className="navbar-brand" to="/search"><UilYoutube color='red' size={45}/></NavLink>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
               </button>

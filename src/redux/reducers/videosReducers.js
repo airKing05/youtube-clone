@@ -1,4 +1,4 @@
-import { VIDEOS_LIST, SET_VIDEOS_LIST, SET_VIDEO_STATICS } from "../constants/constants";
+import { SET_VIDEOS_LIST } from "../constants/constants";
 let initialState = [];
 
 export const videosData = (state = initialState, action) =>{
