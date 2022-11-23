@@ -5,14 +5,16 @@ import Search from './pages/Search';
 import Favourites from './pages/Favourites';
 import Stats from './pages/Stats';
 import Channel from './pages/Channel';
+import Sidebar from './Components/Sidebar';
+import Home from './pages/Home';
 
 
 function App() {
   return (
     <div className="App">
-     <Navbar/>
      <Routes>
-      <Route path='/' element={<Search/>}></Route>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/search' element={<Search/>}></Route>
         <Route path='/favourites' element={<Favourites />}></Route>
         <Route path='/stats' element={<Stats />}></Route>
         <Route path='/channel-details' element={<Channel/>}></Route>
