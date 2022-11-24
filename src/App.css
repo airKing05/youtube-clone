@@ -5,7 +5,7 @@
 } */
 
 /* bootstrap customize css */
-.form-control:focus {
+/* .form-control:focus {
   box-shadow: none;
 }
 .nav-link:hover, .nav-link:active{
@@ -30,7 +30,7 @@
   outline: none;
   box-shadow: none;
 }
-/* bootstrap customize css */
+bootstrap customize css */
 
 
 
@@ -56,6 +56,4 @@
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
-.nav__search__btn{
-  
-}
+
