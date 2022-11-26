@@ -1,17 +1,14 @@
 import React from 'react';
 import { Link} from 'react-router-dom';
 import { UilSearch, UilYoutube, UilBars, UilTimes, UilMicrophone, UilVideo, UilBell } from '@iconscout/react-unicons';
-import {useDispatch, useSelector} from 'react-redux';
-import { genralAction } from '../redux/actions/genralAction';
+
+
 
 export default function Navbar() {
-    const dispatch = useDispatch();
-    const sidebarShowEnabled = useSelector((state) => state.genralReducer.sidebarShow);
-
     return (
         <nav className='position-sticky navabar d-flex justify-content-between align-items-center' style={{height: '35px', padding: '30px'}}>
             <div className=' d-flex align-items-center'>
-                <div onClick={() => dispatch(genralAction(!sidebarShowEnabled))}>
+                <div>
                     <UilBars color="#dee2e6" size={30} />
                 </div>
                 <Link to="/" className='text-decoration-none'>
