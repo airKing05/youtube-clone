@@ -57,3 +57,11 @@ bootstrap customize css */
   border-bottom-right-radius: 20px;
 }
 
+
+
+
+.home-video-container{
+  position: absolute;
+  top: 65px;
+  left: 250px;
+}

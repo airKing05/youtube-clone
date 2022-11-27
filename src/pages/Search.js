@@ -20,7 +20,7 @@ export default function Search() {
 
   // get video data from search channel
   const videosList = useSelector((state) => state.videosData);
-  //console.log("VIDEOS LIST", videosList)
+  console.log("VIDEOS LIST", videosList)
   if (list !== videosList) {
     setList(videosList);
   }
@@ -34,7 +34,7 @@ export default function Search() {
 
   // send channel name to get video data from search channel
   function handleSearch() {
-    console.log(inputElement.current.value)
+   // console.log(inputElement.current.value)
     dispatch(searchChannel(inputElement.current.value) )
   }
 

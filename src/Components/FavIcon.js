@@ -3,7 +3,7 @@ import { UilHeartAlt} from '@iconscout/react-unicons';
 
 
 export default function FavIcon(props) {
-  console.log(props)
+  //console.log(props)
   return (
     <span 
     className='btn border-none p-0' 
