@@ -12,13 +12,14 @@ async function getApiData() {
     const part = encodeURI('snippet,contentDetails,statistics');
     const chart = 'mostPopular';
     const regionCode = "IN";
-    const maxResult = 20;
+    const maxResults = 20;
     const pageToken = ''    // right now dont have pagetoken bcoz first query
-    //const url = `${BASE_URL}/videos?part=${part}&chart=${chart}&regionCode=${regionCode}&maxResult=${maxResult}&key=${KEY}`;
+    const url = `${BASE_URL}/videos?part=${part}&chart=${chart}&regionCode=${regionCode}&maxResults=${maxResults}&key=${KEY}`;
     // https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=[YOUR_API_KEY]
 
-    const url = 'https://jsonplaceholder.typicode.com/users';
+    //const url = 'https://jsonplaceholder.typicode.com/users';
     const videos =  await fetch(url).then(r => r.json());
+    console.log("skjbvhfjbvjkd", videos)
     return videos;
     
 }
@@ -26,9 +27,9 @@ async function getApiData() {
 function* fetchVideosHome() {
     try {      
         const videos = yield call(getApiData);
-        yield put({ type: HOME_VIDEOS_SUCCESS, videos: videos });
+        yield put({ type: HOME_VIDEOS_SUCCESS, payload: videos }); // videos: videos
     } catch (error) {
-        yield put({type: HOME_VIDEOS_FAIL, message: error.message});
+        yield put({ type: HOME_VIDEOS_FAIL, paylaod: error.message }); // message: videos
     }
 }
 
