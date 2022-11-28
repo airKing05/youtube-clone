@@ -104,7 +104,7 @@ export default function Sidebar() {
     ];
 
   return (
-      <div className='d-flex flex-column justify-content-center px-4' style={{ width: '240px', overflowY: 'scroll'}}>
+      <div className='d-flex flex-column justify-content-center position-sticky px-4' style={{ width: '240px'}}>
           <ul className='d-flex flex-column mx-2 py-2 list-unstyled gap-3'>
               {mainLinks.map(({name, icon}) => {
                 return(

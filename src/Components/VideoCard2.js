@@ -3,6 +3,7 @@ import numeral from 'numeral';
 import React, { useState, useEffect } from 'react';
 import apiRequest from '../api';
 import FavIcon from './FavIcon';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export default function VideoCard2({ videoData }) {
     const [duration, setDuration] = useState(null);
@@ -47,30 +48,33 @@ export default function VideoCard2({ videoData }) {
     }, [channelId])
 
     const formateDuration = (time) => {
-        console.log("times", time);
-
         const second  =  moment.duration(time).asSeconds();
-        console.log("times secod", second);
-
         const newDuration =  moment.utc(second*1000).format("mm:ss");
-        console.log("times new durauon", newDuration);
-
         return newDuration;
-    }
+    };
 
     return (
         <>
-            <div className='col-md-3 col-ms-4 position-relative m-3' style={{ maxWidth: '260px', padding: '1px' }}>
-                <img src={medium.url} className='img-fluid ' alt='thumbnail' style={{ borderRadius: '12px' }} />
-                <span className="position-absolute" style={{ top: '1%', right: '7%' }}><FavIcon /></span>
-                <div className='row my-auto mt-3 p-0'>
+            <div className='col-md-3 col-ms-4 position-relative my-3 mx-2' style={{ maxWidth: '200px', padding: '1px', cursor: 'pointer' }}>
+                <div className='position-relative'>
+                    {/* <img src={medium.url} className='img-fluid ' alt='thumbnail' style={{ borderRadius: '12px' }} /> */}
+                    <LazyLoadImage 
+                    src={medium.url}
+                    effect='blur'
+                    className='img-fluid' style={{ borderRadius: '12px' }} 
+                     />
+                    <span className='bg-dark px-1 position-absolute rounded' style={{ top: '80%', right: '2%', fontSize: '12px' }}>{formateDuration(duration)}</span>
+                    <span className="position-absolute" style={{ top: '1%', right: '7%' }}><FavIcon /></span>
+                </div>
+                <div className='row my-auto mt-2 p-0'>
                     <div className='col-3 postion-relative'>
-                        <img src={channelUrl} className='img-fluid rounded-circle' alt='thumbnail' />
-                        <span className='bg-dark p-2'>{formateDuration(duration)}</span>
+                        {/* <img src={channelUrl} className='img-fluid rounded-circle' alt='thumbnail' /> */}
+                        <LazyLoadImage src={channelUrl} className='img-fluid rounded-circle' alt='thumbnail' />
+                        
                     </div>
-                    <div className='col-9 text-start text-muted '>
-                        <h6 className='text-wrap fs-6' >{title} </h6>
-                        <span style={{ fontSize: '12px' }} className="pt-0 text-muted">{channelTitle}</span>
+                    <div className='col-9 text-start text-muted p-0'>
+                        <h6 className='text-wrap video-title mb-0' >{title} </h6>
+                        <span style={{ fontSize: '12px' }} className=" text-muted">{channelTitle}</span>
                         <div style={{ fontSize: '10px' }} ><span className="text-muted">{numeral(views).format('0.a')} views</span> &#x2022; <span className="text-muted">{moment(publishedAt).fromNow()}</span></div>
                     </div>
                 </div>
