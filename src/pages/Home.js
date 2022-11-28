@@ -7,6 +7,9 @@ import VideoCard2 from '../Components/VideoCard2';
 import VideoCard3 from '../Components/VideoCard3';
 import { getMostPopularVideos } from './../redux/actions/mostPopulareVideosAction';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import HomeSkeletonCard from '../Components/skeletons/HomeSkeletonCard';
+import Skeleton from 'react-loading-skeleton';
+
 
 
 export default function Home() {
@@ -41,7 +44,7 @@ export default function Home() {
                     className="row"
                 >
                     {
-                        mostPopularVideos.loading ? "DATA FATCHING" : mostPopularVideos.videos.map((video) => <VideoCard2 key={video.id} videoData={video} />)
+                        mostPopularVideos.loading ? [...Array(20)].map(() => <HomeSkeletonCard/>)  : mostPopularVideos.videos.map((video) => <VideoCard2 key={video.id} videoData={video} />)
                     }
                 </InfiniteScroll>
             </div>
