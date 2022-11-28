@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import ChannelSummary from '../Components/ChannelSummary'
 import VideoCard1 from '../Components/VideoCard1'
-import VideoCard2 from '../Components/VideoCard2'
+import VideoCard2 from '../Components/videoCards/VideoCard2'
 
 export default function Channel() {
   const [channelData, setChannelData] = useState([]);

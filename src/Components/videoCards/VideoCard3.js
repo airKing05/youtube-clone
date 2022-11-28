@@ -1,8 +1,8 @@
 import moment from 'moment';
 import numeral from 'numeral';
 import React, { useState, useEffect } from 'react';
-import apiRequest from '../api';
-import FavIcon from './FavIcon';
+import apiRequest from '../../api';
+import FavIcon from '../FavIcon';
 
 export default function VideoCard3() {
     
