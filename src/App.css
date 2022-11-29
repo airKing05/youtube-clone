@@ -8,9 +8,11 @@
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
+
 .input-data{
   width: 100%;
   padding-left: 10px;
+  border-bottom: 1px solid white;
 }
 .input-data:focus {
   outline: none;
@@ -36,10 +38,13 @@
 /*  Home vide card title Video */
 .video-title{
   font-size: 13px;
- 
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 /*  Home vide card title Video */
+
+
+/* comments */
+/* comments */

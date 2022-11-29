@@ -1,5 +1,5 @@
 import React from 'react';
-import { UilShare, UilThumbsUp, UilThumbsDown, UilImport } from '@iconscout/react-unicons'
+import { UilShare, UilThumbsUp, UilThumbsDown, UilImport } from '@iconscout/react-unicons';
 
 export default function ChannelLinks() {
   return (

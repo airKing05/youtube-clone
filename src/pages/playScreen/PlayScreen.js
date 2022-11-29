@@ -22,12 +22,12 @@ export default function PlayScreen() {
                                 title="MY FIrst video in youtube creation" >
                             </iframe>
                         </div>
-                        <h2>THis is my first video in youtube</h2>
+                        <h5>THis is my first video in youtube</h5>
                         <ChannelLinks/>
                         <VideoMetaData/>
                         <Comments/>
                     </div>
-                    <div className='col-md-4 p-4 p-0'>
+                    <div className='col-md-4 p-0'>
                         {
                             [...Array(20)].map(() => <VideoCardHorizonatal/>)
                         }
