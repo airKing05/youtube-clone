@@ -1,9 +1,11 @@
+import numeral from 'numeral';
 import React, { useState } from 'react';
 
 
-export default function VideoMetaData() {
+export default function VideoMetaData({ videoDataById }) {
   const [showMore, setShowMore] = useState(false);
 
+  const { snippet: { description }, statistics: { viewCount } } = videoDataById;
   const dynamicCSS = () =>( {
   'overflow': 'hidden',
   'display': `-webkit-box`,
@@ -15,23 +17,14 @@ export default function VideoMetaData() {
 
     <div className='d-flex flex-column justify-content-start border  rounded p-2 overflow-hidden' style={{ backgroundColor: '#282828',  }}>
       <span className='d-flex justify-content-start bg-transparent fs-6 fw-bold my-2'>
-        <span className='bg-transparent'>12k views</span> &nbsp; &nbsp; <span className='bg-transparent'>3 days ago</span>
+        <span className='bg-transparent'>{numeral(viewCount).format('0.a').toUpperCase} views</span> &nbsp; &nbsp; <span className='bg-transparent'>3 days ago</span>
       </span>
 
       <div className='bg-transparent overflow-hidden' 
       style={{fontSize: ''}}
       >
         <sapn className='bg-transparent' style={dynamicCSS()}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Ipsa suscipit possimus est accusamus voluptate fuga nisi provident dolor,
-            non quasi, dignissimos vel eveniet ut repudiandae atque? Numquam quaerat dicta at
-            incidunt aliquid voluptatum optio rem quam neque totam doloremque facere, recusandae
-            minima ab quibusdam asperiores saepe! Eveniet suscipit a omnis explicabo molestias qui
-            tempore culpa amet recusandae, quasi doloremque magni ipsam magnam quas voluptatum
-            minima similique reiciendis voluptas excepturi provident optio repellendus. Assumenda,
-            cumque nihil itaque veritatis sint, modi eligendi necessitatibus in eveniet natus
-            perspiciatis officiis quas totam deserunt voluptates qui sapiente voluptas placeat!
-            Enim eveniet aliquid nemo minima tenetur?
+          {description}
         </sapn>
         <span 
           className='bg-transparent text-primary'

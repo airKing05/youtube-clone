@@ -1,7 +1,12 @@
 import React from 'react';
 import { UilShare, UilThumbsUp, UilThumbsDown, UilImport } from '@iconscout/react-unicons';
+import numeral from 'numeral';
 
-export default function ChannelLinks() {
+export default function ChannelLinks({ videoDataById }) {
+  //console.log("linek count", videoDataById);
+
+  const { snippet: { channelId}, statistics: {likeCount } } = videoDataById;
+
   return (
       <div className='my-3 d-flex flex-row justify-content-between align-items-center'>
           <div className='d-flex align-items-center'>
@@ -22,7 +27,7 @@ export default function ChannelLinks() {
         </div>
           <div className='d-flex flex-row align-items-center' style={{ fontSize: '12px' }}>
               <div className='border py-1 px-2 rounded-pill mx-1 ' >
-                  <span className='px-1'><UilThumbsUp size={15} color="#dee2e6" /> 10K </span> 
+          <span className='px-1'><UilThumbsUp size={15} color="#dee2e6" /> {numeral(likeCount).format('0.a')} </span> 
                   <sapn className="border-end"></sapn>
                   <span className='px-1'><UilThumbsDown size={15} color="#dee2e6" /></span>
             </div>

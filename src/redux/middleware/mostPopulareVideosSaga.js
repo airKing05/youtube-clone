@@ -19,7 +19,7 @@ async function getApiData() {
 
     //const url = 'https://jsonplaceholder.typicode.com/users';
     const videos =  await fetch(url).then(r => r.json());
-    console.log("skjbvhfjbvjkd", videos)
+    // console.log("skjbvhfjbvjkd", videos)
     return videos;
     
 }

@@ -15,7 +15,7 @@ function App() {
     <div className="App">
      <Routes>
         <Route path='/' element={<Home />} exact></Route>
-        <Route path='/watch:id' element={<PlayScreen />} exact></Route>
+        <Route path='/watch/:id' element={<PlayScreen />} exact></Route>
         <Route path='/search' element={<Search/>}></Route>
         <Route path='/favourites' element={<Favourites />}></Route>
         <Route path='/stats' element={<Stats />}></Route>

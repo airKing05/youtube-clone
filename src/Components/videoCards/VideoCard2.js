@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import apiRequest from '../../api';
 import FavIcon from '../FavIcon';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useNavigate, NavLink, Link} from 'react-router-dom';
 
 export default function VideoCard2({ videoData }) {
     const [duration, setDuration] = useState(null);
@@ -11,9 +12,12 @@ export default function VideoCard2({ videoData }) {
     const [channelUrl, setChannelUrl] =useState('');
 
 
-    console.log("duraion and views", duration, views)
-    const { id, snippet: { publishedAt, channelId, title, thumbnails: { medium }, channelTitle } } = videoData;
 
+
+    // console.log("duraion and views", duration, views)
+    const { id, snippet: { publishedAt, channelId, title, thumbnails: { medium }, channelTitle } } = videoData;
+    //console.log("videodata+++++++++++++",videoData)
+  
     // contentDetails and statistics taking as dynamicly bcoz, that can be change on each and ever second
     const getMoreVideosData = async () => {
         const res = await apiRequest('/videos', {
@@ -38,7 +42,7 @@ export default function VideoCard2({ videoData }) {
                 id: channelId
             }
         })
-        console.log("channle data ", res);
+        // console.log("channle data ", res);
         const urlData = res.data.items[0].snippet.thumbnails.default.url;
         setChannelUrl(urlData)
     };
@@ -53,9 +57,19 @@ export default function VideoCard2({ videoData }) {
         return newDuration;
     };
 
+    // handling video click to show in play screen
+    const navigate = useNavigate();
+    const handleVideoClick =(id)=>{
+        navigate(`/watch/${id}`);
+        // {/* onClick={() => handleVideoClick(id)} */ }
+    };
+
     return (
         <>
-            <div className='col-md-3 col-ms-4 position-relative my-3 mx-2' style={{ maxWidth: '200px', padding: '1px', cursor: 'pointer' }}>
+            <div
+                onClick={() => handleVideoClick(id)}
+            className='col-md-3 col-ms-4 position-relative my-3 mx-2' 
+            style={{ maxWidth: '200px', padding: '1px', cursor: 'pointer' }}>
                 <div className='position-relative'>
                     {/* <img src={medium.url} className='img-fluid ' alt='thumbnail' style={{ borderRadius: '12px' }} /> */}
                     <LazyLoadImage 

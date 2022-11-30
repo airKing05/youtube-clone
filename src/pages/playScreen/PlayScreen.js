@@ -1,4 +1,8 @@
 import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import apiRequest from '../../api'
 import ChannelLinks from '../../Components/channel/ChannelLinks'
 import Comments from '../../Components/comments/Comments'
 import Navbar from '../../Components/Navbar'
@@ -6,6 +10,26 @@ import VideoCardHorizonatal from '../../Components/videoCards/VideoCardHorizonat
 import VideoMetaData from '../../Components/videoMetaData/VideoMetaData'
 
 export default function PlayScreen() {
+    const [videoDataById, setVideoDataById] = useState('');
+   
+    const{ id } = useParams();
+    console.log(id)
+    async function getVideoMoreDetails( ){
+     const res = await apiRequest('/videos',  {
+         params: {
+             part: 'snippet,statistics',
+             id: id
+         }
+     });
+        setVideoDataById(res.data.items[0])
+        console.log("ressssss", res.data.items[0])
+    }
+
+//     const { snippet: { channelTitle, description, localized: { title } }, statistics: { commentCount, viewCount, likeCount }} = videoDataById;
+  console.log("kjafbgjknk", videoDataById)
+    useEffect(()=>{
+getVideoMoreDetails()
+    }, [id])
     return (
         <div>
             <Navbar />
@@ -14,18 +38,19 @@ export default function PlayScreen() {
                     <div className='col-md-8  p-0'>
                         <div className='mb-2' style={{width: '100%', height: '70vh'}}> 
                             <iframe
-                                src="https://www.youtube.com/embed/tgbNymZ7vqY"
+                                src={`https://www.youtube.com/embed/${id}`}
                                 width="100%" 
                                 height="100%"
                                 allowFullScreen
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 frameBorder='0'
-                                title="MY FIrst video in youtube creation" >
+                                title={videoDataById && videoDataById.snippet?.title} >
                             </iframe>
                         </div>
-                        <h5>THis is my first video in youtube</h5>
-                        <ChannelLinks/>
-                        <VideoMetaData/>
-                        <Comments/>
+                        <h5>this is tit</h5>
+                        <ChannelLinks videoDataById={videoDataById && videoDataById}  />
+                        <VideoMetaData videoDataById={videoDataById && videoDataById} />
+                        <Comments videoDataById={videoDataById && videoDataById} />
                     </div>
                     <div className='col-md-4 p-0'>
                         {

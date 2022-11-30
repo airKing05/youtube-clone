@@ -16,7 +16,7 @@ export default function Home() {
     const dispatch = useDispatch();
 
     const mostPopularVideos = useSelector((state) => state.mostPopularVideos);
-    console.log("mostPopularVideos", mostPopularVideos)
+    console.log("mostPopularVideos",mostPopularVideos)
     useEffect(() => {
         dispatch(getMostPopularVideos());
     }, [dispatch]);
