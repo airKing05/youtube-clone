@@ -2,15 +2,15 @@ import { HOME_VIDEOS_REQUEST, SELECTED_VIDEO_REQUEST } from "../constants/consta
 
 
 export function getMostPopularVideos(){
-    // console.log("getmost pop")
     return {
         type: HOME_VIDEOS_REQUEST
     }
 }
 
 
-export function getVideoById(){
+export function getVideoById(id){
     return {
-        type: SELECTED_VIDEO_REQUEST
+        type: SELECTED_VIDEO_REQUEST,
+        payload: id
     }
 }

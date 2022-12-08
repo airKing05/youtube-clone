@@ -8,6 +8,6 @@ export default function* storeSaga(){
     yield all([
         fork(videoDataSaga),
         fork(mostPopulareVideoSaga),
-        // fork(selectedVideoByIdSaga)
+        fork(selectedVideoByIdSaga)
     ])
 }

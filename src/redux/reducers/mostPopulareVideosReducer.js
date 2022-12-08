@@ -9,11 +9,11 @@ const initialState = {
 }
 
 export default function mostPopularVideos(state = initialState, action) {
-    console.log("action in reducers", action)
+    //console.log("action in reducers", action)
     const {type, payload} = action;
     switch (type) {
         case HOME_VIDEOS_REQUEST:
-            console.log("reducer", action)
+            //console.log("reducer", action)
             return {
                 ...state, loading: true
             }

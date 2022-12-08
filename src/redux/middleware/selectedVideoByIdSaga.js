@@ -2,28 +2,28 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import apiRequest from "../../api";
 import { SELECTED_VIDEO_FAIL, SELECTED_VIDEO_REQUEST, SELECTED_VIDEO_SUCCESS } from "../constants/constants";
 
-async function getApiData(){
+console.log("saga od selected video")
+async function getApiData(videoId){
     const res = await apiRequest('/videos', {
         params: {
             part: 'statistics,snippet',
-            // id: id
+            id: videoId
         }
     })
-    console.log(res)
+    console.log("singl vide request data",res)
     return res;
 }
-function* fetchSelectedVideoById(){
+function* fetchSelectedVideoById(action){
     try {
-        const video = yield call(getApiData);
+        const video = yield call(getApiData, action.paylaod);
         put({ type: SELECTED_VIDEO_SUCCESS, paylaod: video[0] });
     } catch (error) {
-        const video = yield call(getApiData);
         put({ type: SELECTED_VIDEO_FAIL, paylaod: error.message });
     }
 
 }
 function* selectedVideoByIdSaga(){
-    takeEvery({type: SELECTED_VIDEO_REQUEST, fetchSelectedVideoById})
+    yield takeEvery({type: SELECTED_VIDEO_REQUEST, fetchSelectedVideoById})
 };
 
 export default selectedVideoByIdSaga;
