@@ -6,7 +6,7 @@ import selectedVideoByIdSaga from "./selectedVideoByIdSaga";
 
 export default function* storeSaga(){
     yield all([
-        fork(videoDataSaga),
+        // fork(videoDataSaga),
         fork(mostPopulareVideoSaga),
         fork(selectedVideoByIdSaga)
     ])

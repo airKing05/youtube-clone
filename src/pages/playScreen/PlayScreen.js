@@ -51,9 +51,9 @@ getVideoMoreDetails()
                             </iframe>
                         </div>
                         <h5>this is tit</h5>
-                        {/* <ChannelLinks videoDataById={videoDataById && videoDataById}  />
+                        <ChannelLinks videoDataById={videoDataById && videoDataById}  />
                         <VideoMetaData videoDataById={videoDataById && videoDataById} />
-                        <Comments videoDataById={videoDataById && videoDataById} /> */}
+                        <Comments videoDataById={videoDataById && videoDataById} />
                     </div>
                     <div className='col-md-4 p-0'>
                         {

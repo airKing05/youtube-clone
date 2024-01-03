@@ -1,8 +1,8 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import apiRequest from "../../api";
 import { SELECTED_VIDEO_FAIL, SELECTED_VIDEO_REQUEST, SELECTED_VIDEO_SUCCESS } from "../constants/constants";
 
-console.log("saga od selected video")
+// console.log("saga od selected video")
 async function getApiData(videoId){
     const res = await apiRequest('/videos', {
         params: {
@@ -23,7 +23,7 @@ function* fetchSelectedVideoById(action){
 
 }
 function* selectedVideoByIdSaga(){
-    yield takeEvery({type: SELECTED_VIDEO_REQUEST, fetchSelectedVideoById})
+    yield takeLatest('SELECTED_VIDEO_REQUEST', fetchSelectedVideoById)
 };
 
 export default selectedVideoByIdSaga;

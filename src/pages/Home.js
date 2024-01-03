@@ -17,12 +17,13 @@ export default function Home() {
 
     const mostPopularVideos = useSelector((state) => state.mostPopularVideos);
     console.log("mostPopularVideos",mostPopularVideos)
+    
     useEffect(() => {
-        dispatch(getMostPopularVideos());
+        dispatch({ type: 'HOME_VIDEOS_REQUEST'});
     }, [dispatch]);
 
     const fetchData = () => {
-        dispatch(getMostPopularVideos());
+        // dispatch(getMostPopularVideos());
         //loading logic
     };
     return (
@@ -44,7 +45,9 @@ export default function Home() {
                     className="row"
                 >
                     {
-                        mostPopularVideos.loading ? [...Array(20)].map(() => <HomeSkeletonCard/>)  : mostPopularVideos.videos.map((video) => <VideoCard2 key={video.id} videoData={video} />)
+                        mostPopularVideos.loading ? 
+                        [...Array(20)].map(() => <HomeSkeletonCard/>)  
+                        : mostPopularVideos.videos.map((video) => <VideoCard2 key={video.id} videoData={video} />)
                     }
                 </InfiniteScroll>
             </div>

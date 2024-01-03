@@ -1,10 +1,10 @@
 
 
 import { HOME_VIDEOS_SUCCESS, HOME_VIDEOS_FAIL, HOME_VIDEOS_REQUEST } from "../constants/constants";
-import { takeEvery, put, call } from "redux-saga/effects";
+import { takeEvery, put, call, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
-const KEY = process.env.REACT_APP_API_KEY;
+const KEY = process.env.REACT_APP_API_KEY || 'AIzaSyAvudCPRsAqikw6eTPHaPAi7fm29-aig-8';
 const BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
 
@@ -19,23 +19,26 @@ async function getApiData() {
 
     //const url = 'https://jsonplaceholder.typicode.com/users';
     const videos =  await fetch(url).then(r => r.json());
-    // console.log("skjbvhfjbvjkd", videos)
     return videos;
     
 }
 
+// this is worker saga
 function* fetchVideosHome() {
     try {      
         const videos = yield call(getApiData);
         yield put({ type: HOME_VIDEOS_SUCCESS, payload: videos }); // videos: videos
     } catch (error) {
-        yield put({ type: HOME_VIDEOS_FAIL, paylaod: error.message }); // message: videos
+        yield put({ type: HOME_VIDEOS_FAIL, payload: error.message }); // message: videos
     }
 }
 
 
+// this is watcher saga
 function* mostPopulareVideoSaga() {
-    yield takeEvery(HOME_VIDEOS_REQUEST, fetchVideosHome);
+    console.log("called mostPopulareVideoSaga ffff",)
+    yield takeLatest('HOME_VIDEOS_REQUEST', fetchVideosHome);
+    console.log("called mostPopulareVideoSaga",)
 }
 
 
