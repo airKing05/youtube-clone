@@ -5,7 +5,7 @@ import Navbar from '../Components/Navbar';
 import Sidebar from '../Components/Sidebar';
 import VideoCard2 from '../Components/videoCards/VideoCard2';
 import VideoCard3 from '../Components/videoCards/VideoCard3';
-import { getMostPopularVideos } from './../redux/actions/mostPopulareVideosAction';
+import { getMostPopularVideos } from '../redux/actions/mostPopulareVideosAction';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import HomeSkeletonCard from '../Components/skeletons/HomeSkeletonCard';
 import Skeleton from 'react-loading-skeleton';
@@ -46,7 +46,7 @@ export default function Home() {
                 >
                     {
                         mostPopularVideos.loading ? 
-                        [...Array(20)].map(() => <HomeSkeletonCard/>)  
+                            [...Array(20)].map((_, index) => <React.Fragment key={index}> <HomeSkeletonCard /> </React.Fragment> )  
                         : mostPopularVideos.videos.map((video) => <VideoCard2 key={video.id} videoData={video} />)
                     }
                 </InfiniteScroll>

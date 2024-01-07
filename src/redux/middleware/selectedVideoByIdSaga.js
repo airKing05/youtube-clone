@@ -15,10 +15,10 @@ async function getApiData(videoId){
 }
 function* fetchSelectedVideoById(action){
     try {
-        const video = yield call(getApiData, action.paylaod);
-        put({ type: SELECTED_VIDEO_SUCCESS, paylaod: video[0] });
+        const video = yield call(getApiData, action.payload);
+        put({ type: SELECTED_VIDEO_SUCCESS, payload: video[0] });
     } catch (error) {
-        put({ type: SELECTED_VIDEO_FAIL, paylaod: error.message });
+        put({ type: SELECTED_VIDEO_FAIL, payload: error.message });
     }
 
 }

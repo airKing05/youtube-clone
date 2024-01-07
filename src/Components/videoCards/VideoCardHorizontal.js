@@ -6,7 +6,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { UilCheckCircle } from '@iconscout/react-unicons'
 
 
-export default function VideoCardHorizonatal() {
+export default function VideoCardHorizontal() {
 
   const formateDuration = (time) => {
     const second = moment.duration(time).asSeconds();

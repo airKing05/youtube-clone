@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function () {
+export default function AddComment() {
     return (
         <div className='d-flex flex-column '>
             <div className='row '>
