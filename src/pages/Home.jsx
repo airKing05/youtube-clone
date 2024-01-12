@@ -16,7 +16,6 @@ export default function Home() {
     const dispatch = useDispatch();
 
     const mostPopularVideos = useSelector((state) => state.mostPopularVideos);
-    console.log("mostPopularVideos",mostPopularVideos)
     
     useEffect(() => {
         dispatch({ type: 'HOME_VIDEOS_REQUEST'});
@@ -40,7 +39,7 @@ export default function Home() {
                     next={fetchData}
                     hasMore={true}
                     loader={
-                        <div className='spinner-border text-primary positon-absolute d-flex  top-100' style={{left: '40%'}}></div>
+                        <div className='spinner-border text-primary position-absolute d-flex  top-100' style={{left: '40%'}}></div>
                     }
                     className="row"
                 >

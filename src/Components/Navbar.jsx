@@ -1,12 +1,18 @@
-import React from 'react';
-import { Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate} from 'react-router-dom';
 import { UilSearch, UilYoutube, UilBars, UilTimes, UilMicrophone, UilVideo, UilBell } from '@iconscout/react-unicons';
 
 
 
 export default function Navbar() {
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        navigate(`/search/${searchQuery}`);
+    }
     return (
-        <nav className='position-sticky navabar d-flex justify-content-between align-items-center' style={{height: '35px', padding: '30px'}}>
+        <nav className='position-sticky navbar d-flex justify-content-between align-items-center' style={{height: '35px', padding: '30px'}}>
             <div className=' d-flex align-items-center'>
                 <div>
                     <UilBars color="#dee2e6" size={30} />
@@ -21,14 +27,24 @@ export default function Navbar() {
             <div className='d-flex justify-content-center align-items-center gap-2'>
                 <div className='d-flex align-items-center p-0' style={{ width: '400px' }}>
                     <div className='d-flex align-items-center pr-4 nav__input'>
-                        <div >
+                        {/* <div >
                             <UilSearch/>
-                        </div>
-                        <input type="text" className="border-0 input-data" />
-                        <UilTimes />
+                        </div> */}
+                        <input
+                            type="text"
+                            className="border-0 input-data"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                        {
+                            searchQuery.length ? <UilTimes /> : null
+                        }
                     </div>
-                    <button className='d-flex justify-content-center align-items-center py-2 px-3 nav__search__btn'>
-                        <UilSearch className="bg-transparent"/>
+                    <button
+                        className='d-flex justify-content-center align-items-center py-2 px-3 nav__search__btn'
+                        onClick={handleSearch}
+                    >
+                        <UilSearch className="bg-transparent" />
                     </button>
                 </div>
                 <div className='bg-dark bg-gradient p-2 m-0 rounded-circle'>

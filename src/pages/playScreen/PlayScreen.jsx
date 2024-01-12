@@ -15,10 +15,8 @@ export default function PlayScreen() {
 
     const { id } = useParams();
     const {state} = useLocation();
-    console.log("state", state)
    
     const { relatedVideos, loading, error } = useSelector(state => state.relatedVideos);
-    // console.log("realted", relatedVideos, loading, error)
 
     const dispatch = useDispatch();
     // useEffect(()=>{dispatch(getVideoById(id))}, [id, dispatch]);
@@ -68,20 +66,12 @@ export default function PlayScreen() {
                         />
                         <VideoMetaData videoData={state.videoData} />
                         <Comments videoData={state.videoData} videoId={id} />
-                        {/* {
-                            videoDataById ?
-                                <>
-                                    <ChannelLinks videoDataById={videoDataById && videoDataById} />
-                                    <VideoMetaData videoDataById={videoDataById && videoDataById} />
-                                    <Comments videoDataById={videoDataById && videoDataById} videoId={id} />
-                                </> : null
-                        } */}
                     </div>
-                    <div className='col-md-4 p-0'>
+                    {/* <div className='col-md-4 p-0'>
                         {
                             [...Array(20)].map(() => <VideoCardHorizontal />)
                         }
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

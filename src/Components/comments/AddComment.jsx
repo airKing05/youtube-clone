@@ -11,7 +11,7 @@ export default function AddComment() {
                     />
                 </div>
                 <div className='col-11'>
-                    <input placeholder='Add a comment...' className='border-bottom-2 border-bottom-white my-3 input-data fs-5 p-0' />
+                    <input placeholder='Add a comment...' className='border-0 my-3 w-100 fs-5 p-0 ps-2' style={{borderBottom: '2px solid white !important'}}/>
                 </div>
             </div>
 

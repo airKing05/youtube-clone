@@ -2,7 +2,6 @@ import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import apiRequest from "../../api";
 import { CHANNEL_DETAILS_FAIL_OF_SELECTED_VIDEO, CHANNEL_DETAILS_SUCCESS_OF_SELECTED_VIDEO, GET_CHANNEL_DETAILS_OF_SELECTED_VIDEO } from "../constants/constants";
 
-// console.log("saga od selected video")
 async function getApiData(channelId) {
     const res = await apiRequest('/channels', {
         params: {
@@ -13,10 +12,8 @@ async function getApiData(channelId) {
     return res;
 }
 function* fetchChannelDetailsByChannelId(action) {
-    console.log("channelID", action.payload)
     try {
         const {data} = yield call(getApiData, action.payload);
-        console.log("comments called", data)
         yield put({ type: CHANNEL_DETAILS_SUCCESS_OF_SELECTED_VIDEO, payload: data.items[0]});
     } catch (error) {
         yield put({ type: CHANNEL_DETAILS_FAIL_OF_SELECTED_VIDEO, payload: 'error msg' });

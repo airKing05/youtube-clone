@@ -16,10 +16,10 @@ function App() {
      <Routes>
         <Route path='/' element={<Home />} exact></Route>
         <Route path='/watch/:id' element={<PlayScreen />} exact></Route>
-        <Route path='/search' element={<Search/>}></Route>
+        <Route path='/search/:query' element={<Search/>}></Route>
         <Route path='/favourites' element={<Favourites />}></Route>
         <Route path='/stats' element={<Stats />}></Route>
-        <Route path='/channel-details' element={<Channel/>}></Route>
+        <Route path='/channel-details/:channelId' element={<Channel/>}></Route>
      </Routes>
     </div>
   );

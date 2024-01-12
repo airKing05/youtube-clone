@@ -25,13 +25,8 @@
   border-bottom-right-radius: 20px;
 }
 
-
-
-
 .home-video-container{
-  position: absolute;
-  /* margin-top: 10vh; */
-  top: 65px;
+  top: 90px;
   left: 250px;
 }
 
@@ -48,3 +43,15 @@
 
 /* comments */
 /* comments */
+
+
+/* search result video card */
+.color-aaa{
+  color: #aaa;
+}
+.channel__icon-sm{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* background-color: beige; */
+}

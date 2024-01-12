@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GET_CHANNEL_DETAILS_OF_SELECTED_VIDEO } from '../../redux/constants/constants';
 
 export default function ChannelLinks({ videoData, channelData }) {
-  //console.log("linek count", videoDataById);
-
   const dispatch = useDispatch();
   const { channelDetails,loading, error } = useSelector(state => state.channelDetails);
 
@@ -43,7 +41,7 @@ export default function ChannelLinks({ videoData, channelData }) {
                 </div>
             </div>
             {/* need to work here of subscribed or not */}
-            <div className='d-flex jutify-content-between' style={{fontSize: '12px'}}>
+            <div className='d-flex justify-content-between' style={{fontSize: '12px'}}>
                   <span className='border bg-dark py-1 px-2 rounded-pill fw-bold'>Join</span> &nbsp; &nbsp;
                   <span className='border bg-dark py-1 px-2 rounded-pill fw-bold text-dark bg-white'>Subscribe</span>
             </div> 

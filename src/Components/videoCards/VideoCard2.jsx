@@ -7,36 +7,33 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useNavigate, NavLink, Link} from 'react-router-dom';
 
 export default function VideoCard2({ videoData }) {
-    // const [duration, setDuration] = useState(null);
-    // const [views, setViews] = useState(null);
+    const [videosMoreDetails, setVideosMoreDetails] = useState(null);
     const [channelData, setChannelData] = useState(null);
 
 
 
 
     // console.log("duraion and views", duration, views)
-    const { id, snippet: { publishedAt, channelId, title, thumbnails: { medium }, channelTitle }, statistics, contentDetails: { duration } } = videoData;
-    const views = statistics?.viewCount;
+    const { id, snippet: { publishedAt, channelId, title, thumbnails: { medium }, channelTitle }, statistics, contentDetails } = videoData;
+   
+    const getMoreVideosData = async (videoId) => {
+        const res = await apiRequest('/videos', {
+            params: {
+                part: 'contentDetails,statistics',
+                id: videoId
+            }
+        })
+        const data = res.data.items[0];
+        setVideosMoreDetails(data);
+    };
 
-    //console.log("videodata+++++++++++++",videoData)
-  
-    // contentDetails and statistics taking as dynamicly bcoz, that can be change on each and ever second
-    // const getMoreVideosData = async () => {
-    //     const res = await apiRequest('/videos', {
-    //         params: {
-    //             part: 'contentDetails,statistics',
-    //             id: id
-    //         }
-    //     })
-    //     const data = res.data.items[0];
-    //     // setDuration(data.contentDetails.duration);
-    //     setViews(data.statistics.viewCount);
-       
-    // };
-    // useEffect(() =>{
-    //     // need to disbale this api request can get the data directly from the home screen
-    //     // getMoreVideosData();
-    // }, [id]);
+    useEffect(() =>{
+        // this API call is only for the channel videos 
+        if ((!contentDetails?.duration || !statistics?.viewCount) && contentDetails?.videoId){
+            getMoreVideosData(contentDetails?.videoId);
+        }
+    }, [contentDetails?.videoId]);
+
 
     const getChannelIconData = async () => {
         const res = await apiRequest('/channels', {
@@ -45,8 +42,6 @@ export default function VideoCard2({ videoData }) {
                 id: channelId
             }
         })
-        // console.log("channle data ", res);
-        const urlData = res.data.items[0].snippet.thumbnails.default.url;
         setChannelData(res.data.items[0])
     };
 
@@ -80,7 +75,7 @@ export default function VideoCard2({ videoData }) {
                     effect='blur'
                     className='img-fluid' style={{ borderRadius: '12px' }} 
                      />
-                    <span className='bg-dark px-1 position-absolute rounded' style={{ top: '80%', right: '2%', fontSize: '12px' }}>{formateDuration(duration)}</span>
+                    <span className='bg-dark px-1 position-absolute rounded' style={{ top: '80%', right: '2%', fontSize: '12px' }}>{formateDuration(contentDetails?.duration || videosMoreDetails?.contentDetails?.duration)}</span>
                     <span className="position-absolute" style={{ top: '1%', right: '7%' }}><FavIcon /></span>
                 </div>
                 <div className='row my-auto mt-2 p-0'>
@@ -96,7 +91,7 @@ export default function VideoCard2({ videoData }) {
                         <h6 className='text-wrap video-title mb-0' >{title} </h6>
                         <span style={{ fontSize: '12px' }} className=" text-muted">{channelTitle}</span>
                         <div style={{ fontSize: '10px' }} >
-                            <span className="text-muted">{numeral(views).format('0.a')} views</span>
+                            <span className="text-muted">{numeral(statistics?.viewCount ? statistics?.viewCount : videosMoreDetails?.statistics?.viewCount).format('0.a')} views</span>
                             &#x2022;
                             <span className="text-muted">{moment(publishedAt).fromNow()}</span>
                         </div>

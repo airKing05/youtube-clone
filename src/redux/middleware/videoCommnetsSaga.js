@@ -1,8 +1,7 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import apiRequest from "../../api";
-import { COMMENTS_FAIL_OF_SELECTED_VIDEO, COMMENTS_SUCCESS_OF_SELECTED_VIDEO, SELECTED_VIDEO_FAIL, SELECTED_VIDEO_REQUEST, SELECTED_VIDEO_SUCCESS } from "../constants/constants";
+import { COMMENTS_FAIL_OF_SELECTED_VIDEO, COMMENTS_SUCCESS_OF_SELECTED_VIDEO } from "../constants/constants";
 
-// console.log("saga od selected video")
 async function getApiData(videoId) {
     const res = await apiRequest('/commentThreads', {
         params: {

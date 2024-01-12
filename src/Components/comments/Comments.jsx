@@ -6,10 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Comments(props) {
   const { videoData, videoId } = props;
   const { snippet, statistics } = videoData;
-  const { channelId } = snippet;
 
   const {comments, loading, error} = useSelector(state => state.comments);
-  console.log("commmetsss page",comments, loading, error)
 
   const dispatch = useDispatch();
 
