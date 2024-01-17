@@ -46,7 +46,7 @@ export default function ChannelHorizontalCard(props) {
 
     return (
         <div
-            className='mx-3 row  py-1'
+            className='mx-3 row  py-1 cursor__pointer'
             onClick={handelChannelClick}
         >
             <div className='col-md-4 d-flex justify-content-center position-relative  m-0 p-0'>
@@ -73,7 +73,7 @@ export default function ChannelHorizontalCard(props) {
                         &#x2022;
                         &nbsp;
                         <span className="text-muted">
-                            {channelData?.statistics?.subscriberCount}K subscribers
+                            {numeral(channelData?.statistics?.subscriberCount).format('0.a').toUpperCase()} K subscribers
                         </span>
                     </div>
                     <div>

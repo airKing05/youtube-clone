@@ -53,13 +53,13 @@ export default function Search() {
   return (
     <>
       <div className='home-container'>
-        <div style={{ height: '7.5vh' }}>
+        <div style={{ height: '10vh' }} className=''>
           <Navbar />
         </div>
-        <div style={{ height: '92.5vh' }}>
+        <div style={{ height: '90vh', overflowY: 'auto' }} className=''>
           <Sidebar />
         </div>
-        <div className='container home-video-container position-absolute '>
+        <div className='home-video-container searchPage__container position-absolute '>
           {
             !loading ? searchResult?.map((_result, index) => {
               if (_result.id.kind === "youtube#video"){

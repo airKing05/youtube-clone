@@ -62,7 +62,7 @@ export default function VideoCardHorizontal(props) {
 
   return (
     <div
-      className={`${viewFor === 'search' ? 'mx-3 py-1' : 'mx-3 ps-2 py-2'} row`}
+      className={`${viewFor === 'search' ? 'mx-3 py-1' : 'mx-3 ps-2 py-2'} row cursor__pointer`}
       onClick={handleVideoClick}
     >
       <div className='col-md-4 position-relative m-0 p-0'>
@@ -93,7 +93,7 @@ export default function VideoCardHorizontal(props) {
             <>
               <div className='justify-content-start align-items-center py-0'>
                 <div style={{ fontSize: '10px' }} >
-                  <span className="text-muted">{numeral(moreDetailsOfVideo?.statistics?.viewCount).format('0.a')} views</span>
+                  <span className="text-muted">{numeral(moreDetailsOfVideo?.statistics?.viewCount).format('0.a').toUpperCase()} views</span>
                   &nbsp;
                   &#x2022;
                   &nbsp;
@@ -120,12 +120,12 @@ export default function VideoCardHorizontal(props) {
             :
             <>
               <div className='d-flex flex-column justify-content-start py-0'>
-                <div className='d-flex pt-2 align-items-center border'>
+                <div className='d-flex pt-2 align-items-center'>
                   <span className='text-muted' style={{ fontSize: '12px' }}>{channelTitle}</span>
                   <span className='mx-1 d-flex pt-1'><UilCheckCircle size={12} color="gray" /></span>
                 </div>
                 <div style={{ fontSize: '10px' }} >
-                  <span className="text-muted">{numeral(moreDetailsOfVideo?.statistics?.viewCount).format('0.a')} views</span>
+                  <span className="text-muted">{numeral(moreDetailsOfVideo?.statistics?.viewCount).format('0.a').toUpperCase()} views</span>
                   &nbsp;
                   &#x2022;
                   &nbsp;

@@ -27,15 +27,16 @@ export default function Home() {
         // dispatch(getMostPopularVideos());
         //loading logic
     };
+
     return (
-        <div className='home-container'>
+        <div className='home-container '>
             <div style={{ height: '7.5vh' }}>
                 <Navbar />
             </div>
             <div style={{ height: '92.5vh' }}>
                 <Sidebar />
             </div>
-            <div className='continaer home-video-container position-absolute '>
+            <div className='home-video-container position-absolute margin-inline-auto'>
                 <CategorySectionBar />
                 <InfiniteScroll
                     dataLength={mostPopularVideos.videos.length}

@@ -7,7 +7,7 @@ const categories = ['all', 'reactjs', 'codding', 'sports', 'music', 'movies', 'h
 export default function CategorySectionBar() {
 
     return (
-        <div className='container d-flex p-2 pe-5 w-60, categories__bar'>
+        <div className='d-flex p-2 pe-5 w-60, categories__bar'>
             {
                 categories.map((category, index) => {
                     return <React.Fragment key={category}>

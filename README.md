@@ -1,123 +1,82 @@
+# YouTube Clone Web App
 
-# Youtube Clone
+This is a fully responsive YouTube clone web application built using React, Redux, and Redux Saga. The app utilizes the YouTube Data API to fetch and display video information. The following API endpoints are used: `/videos`, `/search`, `/commentThreads`, `/channels`, and `/playlistItems`.
 
-sdsd
-This Web App is clone some small part of Youtube.
+## Features
 
+### Home Screen
 
+- Displays the most popular videos.
+- Clicking on a video redirects to the play screen.
 
-## Search Features
+### Play Screen
 
-- Search by Channel Name 
-- Search list will be there in if you reload the page
-- Channel Data -  subscriber, total videos
-- List of video from searched channel name
-- Can Add video as Favourites List 
-- Can be remove all t
+- Shows the selected video along with video details.
+- Provides information about the channel.
+- Displays comments on the video.
+- Shows related videos for further exploration.
 
-## Favourite List Features
+### Channel Page
 
-- Can remove selected video from the favourite lsit
-- Favourite list will be there in if you reload the page
+- Features all channel details, including a beautiful channel banner.
+- Displays videos associated with the channel.
 
-## Stats
-- Basic Inforamtion about the channel -subscriber, total videos
-- Favourites Videos data - total likes of all videos, total views of all videos
-- Get data from local storage
+### Category Filter
 
-## UI 
-- All the web pages are Fully resposive if streach the size of webpage
+- On the home screen, a category bar is provided to filter videos based on keywords.
 
-## API
-**Search Api**
+### Search Screen
 
-- Will get the video list of video by Channel Name
+- Allows users to search for channels and videos.
+- Displays search results with relevant information.
 
-**Channel**
+### Responsive Design
 
-- Will get the channel data by Channel id
+- The application is fully responsive, ensuring a seamless experience across various devices.
 
-**Video Api**
+### Content Skeleton
 
-- Will get the video's statistics of by video id
+- Content skeletons are added during the loading time of the data, providing users with visual cues about incoming content.
 
+## Getting Started
 
+Follow these steps to set up and run the project locally:
 
+1. Clone the repository: `git clone https://github.com/your-username/your-repo.git`
+2. Navigate to the project directory: `cd your-repo`
+3. Install dependencies: `npm install`
+4. Set up your YouTube Data API key and replace `YOUR_API_KEY` in the code with your actual API key.
+5. Run the app: `npm start`
 
-## Tech Stack
+## Dependencies
 
-**Client:** React, Redux, BootStap, CSS
+- React
+- Redux
+- Redux Saga
+- YouTube Data API
+- Numeral
+- Moments
+- React Lazy Load Image Component
+- React Infinite Scroll Component
+- React Loading Skeleton
 
+## Usage
 
+- Visit the home screen to discover popular videos.
+- Click on a video to view details on the play screen.
+- Explore the channel page for comprehensive channel details.
+- Utilize the category bar to filter videos by keywords.
+- Search for channels and videos on the search screen.
 
-## Installation
+## Contributing
 
-Install **ecom-products-review** with npm
+Feel free to contribute to the project by opening issues or submitting pull requests. Follow the established coding guidelines.
 
-```bash
-  npm install my-project
-  cd my-project
-```
-    
-## Run Locally
+## License
 
-Clone the project
+This project is licensed under the [MIT License](LICENSE.md).
 
-```bash
-  https://github.com/airKing05/youtube-clone.git
-```
+## Acknowledgments
 
-Go to the project directory
-
-```bash
-  cd youtube-clone
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Create **.env** file in root folder add youtube api KEY 
-like-
-
-```bash
-REACT_APP_API_KEY = "AIzaSyAvudCPEXfyursw6eTPHaPAi7fm29-aig-8"
-```
-
-**Start the frontend/Rectjs**
-
-```bash
-  npm start
-```
-
-## Screenshots
-
-### small device views
-- Seach by Cahnnel Name
-
-![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.47.43%20PM.png?raw=true)
-
-- Favourites List data
-
-![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.48.48%20PM.png?raw=true)
-
-- Sate Info 
-
-![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.49.02%20PM.png?raw=true)
-
-### Desktop views
-
-
-- Search
-
-![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.56.50%20PM.png?raw=true)
-
-- Favourites list which is also contianed the older search favourites data 
-
-![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.58.22%20PM.png?raw=true)
-
-- Sate Info with all the older data also
-
-![App Screenshot](https://github.com/airKing05/youtube-clone/blob/master/src/assets/Screenshot%202022-08-30%20at%203.58.53%20PM.png?raw=true)
+- Special thanks to the YouTube Data API for providing the necessary data for this project.
+- Appreciation to the React, Redux, and Redux Saga communities for their excellent tools and documentation.
