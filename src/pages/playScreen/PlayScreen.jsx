@@ -37,9 +37,11 @@ export default function PlayScreen() {
     // }, [id])
 
 
-    // for the related videos
+   // for the related videos
+    const currentVideoChannelId = state?.channelData?.id
     useEffect(() => {
-        // dispatch({ type: GET_RELATED_VIDEOS_OF_SELECTED_VIDEO, payload: id })
+        dispatch({
+            type: GET_RELATED_VIDEOS_OF_SELECTED_VIDEO, payload: currentVideoChannelId })
     }, [id])
 
     return (
@@ -67,11 +69,14 @@ export default function PlayScreen() {
                         <VideoMetaData videoData={state.videoData} />
                         <Comments videoData={state.videoData} videoId={id} />
                     </div>
-                    {/* <div className='col-md-4 p-0'>
+                    <div className='col-md-4 p-0'>
                         {
-                            [...Array(20)].map(() => <VideoCardHorizontal />)
+                            !loading ? relatedVideos.map((video, index) => <React.Fragment key={video.id.videoId}>
+                                <VideoCardHorizontal videoData={video}/>
+                            </React.Fragment>)
+                            : null
                         }
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

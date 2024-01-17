@@ -52,40 +52,6 @@ export default function Search() {
 
   return (
     <>
-    {/* <div className='container border' style={{ maxWidth: "1000px" }}>
-      <div className="input-group my-5 d-flex mx-auto" style={{ maxWidth: "500px" }}>
-        <input
-          //minLength={2}
-          //debounceTimeout={1000}
-          type="text"
-          className="form-control"
-          placeholder="search by username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-          ref = {inputElement}
-          //onChange={(e) => { console.log(e.target.value)}}
-        />
-        <span
-          className="input-group-text"
-          id="basic-addon2"
-          onClick={handleSearch}
-        ><UilSearch /></span>
-      </div>
-      <hr />
-      {
-        channelData[0] && channelData[0].snippet ? <ChannelSummary channelInfo={channelData} /> : <h4 className='fs-4 text-danger'>Search Channel Name</h4>
-      }
-    
-      <hr />
-    
-      {
-        list && list.map((video) => {
-          return <VideoCard1 key={video.id.videoId} videoData={video} />
-        })
-      }
-
-    </div> */}
-
       <div className='home-container'>
         <div style={{ height: '7.5vh' }}>
           <Navbar />
@@ -103,6 +69,7 @@ export default function Search() {
               }else{
                 return (<React.Fragment key={_result.id.channelId}>
                   <ChannelHorizontalCard channelSearchData={_result} viewFor="search" />
+                  <hr/>
                 </React.Fragment>)
               }
              

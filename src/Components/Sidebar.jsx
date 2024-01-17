@@ -150,7 +150,7 @@ export default function Sidebar() {
           <ul className='d-flex flex-column mx-2 py-2 list-unstyled gap-3'>
               {helpLinks.map(({ name, icon }) => {
                   return (
-                      <li >
+                      <li key={name}>
                           <Link to="#" className='d-flex align-items-center text-decoration-none gap-4' >
                               {icon}
                                <span className='fw-lighter mx-2'>{name}</span>

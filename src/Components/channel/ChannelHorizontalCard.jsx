@@ -32,7 +32,7 @@ export default function ChannelHorizontalCard(props) {
     const getChannelDetailsByChannelId = async () => {
         const res = await apiRequest('/channels', {
             params: {
-                part: 'snippet,contentDetails,statistics',
+                part: 'snippet,contentDetails,statistics,brandingSettings',
                 id: channelId
             }
         })

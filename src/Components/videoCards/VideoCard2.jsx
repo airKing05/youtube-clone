@@ -4,22 +4,24 @@ import React, { useState, useEffect } from 'react';
 import apiRequest from '../../api';
 import FavIcon from '../FavIcon';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { useNavigate, NavLink, Link} from 'react-router-dom';
+import { useNavigate, NavLink, Link } from 'react-router-dom';
 
 export default function VideoCard2({ videoData }) {
     const [videosMoreDetails, setVideosMoreDetails] = useState(null);
     const [channelData, setChannelData] = useState(null);
 
+    const { 
+        id, 
+        snippet: { publishedAt, channelId, title, thumbnails: { medium }, channelTitle }, 
+        statistics, 
+        contentDetails 
+    } = videoData;
 
 
-
-    // console.log("duraion and views", duration, views)
-    const { id, snippet: { publishedAt, channelId, title, thumbnails: { medium }, channelTitle }, statistics, contentDetails } = videoData;
-   
     const getMoreVideosData = async (videoId) => {
         const res = await apiRequest('/videos', {
             params: {
-                part: 'contentDetails,statistics',
+                part: 'snippet, contentDetails, statistics',
                 id: videoId
             }
         })
@@ -27,12 +29,21 @@ export default function VideoCard2({ videoData }) {
         setVideosMoreDetails(data);
     };
 
-    useEffect(() =>{
+    useEffect(() => {
         // this API call is only for the channel videos 
-        if ((!contentDetails?.duration || !statistics?.viewCount) && contentDetails?.videoId){
+        if ((!contentDetails?.duration || !statistics?.viewCount) && contentDetails?.videoId) {
             getMoreVideosData(contentDetails?.videoId);
         }
     }, [contentDetails?.videoId]);
+
+    let videoIdForCategoryVideoDetailsCalled = id?.videoId
+    useEffect(() => {
+        // this API call, if category keyword is selected
+        if (videoIdForCategoryVideoDetailsCalled) {
+            getMoreVideosData(videoIdForCategoryVideoDetailsCalled);
+        }
+    }, [videoIdForCategoryVideoDetailsCalled]);
+
 
 
     const getChannelIconData = async () => {
@@ -45,42 +56,42 @@ export default function VideoCard2({ videoData }) {
         setChannelData(res.data.items[0])
     };
 
-    useEffect(()=> {
+    useEffect(() => {
         getChannelIconData();
     }, [channelId])
 
     const formateDuration = (time) => {
-        const second  =  moment.duration(time).asSeconds();
-        const newDuration =  moment.utc(second*1000).format("mm:ss");
+        const second = moment.duration(time).asSeconds();
+        const newDuration = moment.utc(second * 1000).format("mm:ss");
         return newDuration;
     };
 
     // handling video click to show in play screen
     const navigate = useNavigate();
-    const handleVideoClick =(id)=>{
-        navigate(`/watch/${id}`, { state: { channelData, videoData } });
+
+    const handleVideoClick = (videoId) => {
+        navigate(`/watch/${videoId}`, { state: { channelData, videoData: videosMoreDetails || videoData } });
         // {/* onClick={() => handleVideoClick(id)} */ }
     };
 
+    const videoIdForNavigateToPlayScreen = id?.videoId ? id.videoId : contentDetails?.videoId ? contentDetails?.videoId : id
     return (
         <>
             <div
-                onClick={() => handleVideoClick(id)}
-            className='col-md-3 col-ms-4 position-relative my-3 mx-2' 
-            style={{ maxWidth: '200px', padding: '1px', cursor: 'pointer' }}>
+                onClick={() => handleVideoClick(videoIdForNavigateToPlayScreen)}
+                className='col-md-3 col-ms-4 position-relative my-3 mx-2'
+                style={{ maxWidth: '200px', padding: '1px', cursor: 'pointer' }}>
                 <div className='position-relative'>
-                    {/* <img src={medium.url} className='img-fluid ' alt='thumbnail' style={{ borderRadius: '12px' }} /> */}
-                    <LazyLoadImage 
-                    src={medium.url}
-                    effect='blur'
-                    className='img-fluid' style={{ borderRadius: '12px' }} 
-                     />
+                    <LazyLoadImage
+                        src={medium.url}
+                        effect='blur'
+                        className='img-fluid' style={{ borderRadius: '12px' }}
+                    />
                     <span className='bg-dark px-1 position-absolute rounded' style={{ top: '80%', right: '2%', fontSize: '12px' }}>{formateDuration(contentDetails?.duration || videosMoreDetails?.contentDetails?.duration)}</span>
                     <span className="position-absolute" style={{ top: '1%', right: '7%' }}><FavIcon /></span>
                 </div>
-                <div className='row my-auto mt-2 p-0'>
-                    <div className='col-3 postion-relative'>
-                        {/* <img src={channelUrl} className='img-fluid rounded-circle' alt='thumbnail' /> */}
+                <div className='row my-auto mt-2 p-0 ms-n-2'>
+                    <div className='col-3 position-relative'>
                         <LazyLoadImage
                             src={channelData?.snippet.thumbnails.default.url}
                             className='img-fluid rounded-circle'

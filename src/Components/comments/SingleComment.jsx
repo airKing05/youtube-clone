@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {UilThumbsUp, UilThumbsDown} from '@iconscout/react-unicons';
 import moment from 'moment';
+import { toggleShowMoreText } from '../../utils/methods/toggleShowMoreText';
 
 function convertDateInToDays(dateString){
     const date = moment(dateString);
@@ -10,6 +11,13 @@ function convertDateInToDays(dateString){
 
 export default function SingleComment({ comment }) {
     const { authorProfileImageUrl, authorDisplayName, publishedAt, textDisplay, likeCount } = comment?.snippet?.topLevelComment?.snippet;
+
+    const [showMore, setShowMore] = useState(true);
+    const isApplyShowMoreText = () => {
+        const flag = String(textDisplay).split(/\r\n|\r|\n/).length >=4 ? true : false;
+        // console.log("flagggggg", flag, textDisplay, String(textDisplay).split(/\r\n|\r|\n/).length, textDisplay.split('\n').length)
+       return flag;
+    }
 
   return (
       <div className='d-flex flex-column my-3'>
@@ -31,26 +39,34 @@ export default function SingleComment({ comment }) {
                       </span> &nbsp;&nbsp;
                       <span className='text-muted' style={{ fontSize: '12px' }}>
                           {
-                              convertDateInToDays(publishedAt)
+                            convertDateInToDays(publishedAt)
                           } days ago
                       </span>
                  </div>
 
                   <div className='' style={{ fontSize: '11px' }}>
-                      <div>
+                      <div className='bg-transparent overflow-hidden'
+                      >
+                          <span className='bg-transparent' style={isApplyShowMoreText() ? toggleShowMoreText(showMore) : {}}>
+                              {textDisplay}
+                          </span>
                           {
-                              textDisplay
+                              isApplyShowMoreText() ? <span
+                                  className='bg-transparent text-primary'
+                                  onClick={() => setShowMore(!showMore)}>{showMore ? "...More" : "Show less"}
+                              </span> : null
                           }
-                          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas odio temporibus similique commodi reiciendis. Atque, deleniti fugit! Assumenda necessitatibus dolor id cumque, culpa numquam laborum. */}
+                         
                       </div>
-                      <div className='px-0'>
+                      <div className='px-0 d-flex align-items-center'>
                           <span className=''><UilThumbsUp size={15} color="#dee2e6" /></span>
-                          <span className='fs-5'>
+                          <span className='fs-6'>
                               &nbsp;
                               {
                                   likeCount > 0 ? likeCount : null
                               }
                           </span>
+                          &nbsp;
                           <span className='px-1'><UilThumbsDown size={15} color="#dee2e6" /></span>
                       </div>
                   </div>

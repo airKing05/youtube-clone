@@ -37,7 +37,10 @@ export default function Navbar() {
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                         {
-                            searchQuery.length ? <UilTimes /> : null
+                            searchQuery.length ? 
+                            <UilTimes 
+                                    onClick={() => {setSearchQuery('')}}
+                            /> : null
                         }
                     </div>
                     <button

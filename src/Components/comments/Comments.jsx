@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import AddComment from './AddComment'
 import SingleComment from './SingleComment'
 import { useDispatch, useSelector } from 'react-redux';
+import numeral from 'numeral';
 
 export default function Comments(props) {
   const { videoData, videoId } = props;
@@ -17,7 +18,7 @@ export default function Comments(props) {
 
   return (
     <div className='d-flex flex-column my-4 p-2'>
-      <div>{statistics?.commentCount} Comments</div>
+      <div>{numeral(statistics?.commentCount).format('0.a').toUpperCase()} Comments</div>
       {/* Loading and error has to manges here */}
       <AddComment />
       {

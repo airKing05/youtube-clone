@@ -4,11 +4,11 @@ import { videosData } from "./videosReducers";
 import { channelData } from "./channelReducers";
 import mostPopularVideos from "./mostPopulareVideosReducer";
 import { commentsByVideoId } from "./commentsByVideoIdReducer";
-import { relatedVideosByVideoId } from "./relatedVideosByVideoIdReducer";
 import { channelDetailsByChannelId } from "./channelDetailsByChannelIdReducer";
 import { searchVideos } from "./searchVideosReducer";
 import { selectedVideoByVideoId } from "./selectedVideoByVideoIdReducer";
 import { channelVideosByChannelRelatedPlaylistUpload } from "./channelVideosByChannelRelatedPlaylistUploadReducer";
+import { relatedVideosByChannelId } from "./relatedVideosByChannelIdReducer";
 
 
 export default combineReducers({ 
@@ -17,7 +17,7 @@ export default combineReducers({
     channelData,
     mostPopularVideos: mostPopularVideos,
     comments: commentsByVideoId,
-    relatedVideos: relatedVideosByVideoId,
+    relatedVideos: relatedVideosByChannelId,
     channelDetails: channelDetailsByChannelId,
     searchResult : searchVideos,
     selectedVideoDetails: selectedVideoByVideoId,

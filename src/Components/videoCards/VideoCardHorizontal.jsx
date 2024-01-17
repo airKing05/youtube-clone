@@ -26,7 +26,7 @@ export default function VideoCardHorizontal(props) {
   };
 
   const handleVideoClick = () => {
-    navigate(`/watch/${videoId}`, { state: { channelData, videoData : moreDetailsOfVideo } });
+    navigate(`/watch/${videoId}`, { state: { channelData, videoData: moreDetailsOfVideo } });
   };
 
   const getVideoMoreDetails = async () => {
@@ -61,8 +61,8 @@ export default function VideoCardHorizontal(props) {
 
 
   return (
-    <div 
-      className='mx-3 row  py-1'
+    <div
+      className={`${viewFor === 'search' ? 'mx-3 py-1' : 'mx-3 ps-2 py-2'} row`}
       onClick={handleVideoClick}
     >
       <div className='col-md-4 position-relative m-0 p-0'>
@@ -70,14 +70,24 @@ export default function VideoCardHorizontal(props) {
           src={thumbnails.high.url}
           // src="https://i.ytimg.com/vi/JtYeYWz5RNA/mqdefault.jpg"
           effect='blur'
-          className='img-fluid' style={{ borderRadius: '12px', height: '100%' }}
+          className='img-fluid' style={{ borderRadius: '8px', height: '100%' }}
         />
-        <span className='bg-dark px-1 position-absolute rounded d-md-block d-none px-2 py-1' style={{ bottom: '14%', right: '2%', fontSize: '10px' }}>{formateDuration(moreDetailsOfVideo?.contentDetails?.duration || '100')}</span>
-        <span className='bg-dark px-1 position-absolute rounded d-block d-md-none' style={{ top: '80%', right: '2%', fontSize: '10px' }}>{formateDuration('100')}</span>
+        <span
+          className='bg-dark position-absolute rounded d-md-block d-none px-2 py-1'
+          style={{ bottom: viewFor === 'search' ? '14%' : '5%', right: '2%', fontSize: '10px' }}
+        >
+          {formateDuration(moreDetailsOfVideo?.contentDetails?.duration || '100')}
+        </span>
+        <span
+          className='bg-dark px-1 position-absolute rounded d-block d-md-none'
+          style={{ top: '80%', right: '2%', fontSize: '10px' }}
+        >
+          {formateDuration('100')}
+        </span>
 
       </div>
       <div className='col-md-8 pt-1'>
-        <div className='video-title py-1 fs-3'>{title}</div>
+        <div className={`${viewFor === 'search' ? 'fs-3 py-1' : 'fs-6 pt-n-1'} video-title`}>{title}</div>
         {
           viewFor === 'search' ?
             <>
@@ -99,7 +109,7 @@ export default function VideoCardHorizontal(props) {
                     />
                   </span>
                   <span className='text-muted color-aaa' style={{ fontSize: '12px' }}>{channelTitle}</span>
-                  <span className='mx-1 d-flex align-items-center'><UilCheckCircle size={12} color="#aaa" /></span>
+                  <span className='mx-1 d-flex pt-1'><UilCheckCircle size={12} color="#aaa" /></span>
                 </div>
 
                 <div>
@@ -109,9 +119,11 @@ export default function VideoCardHorizontal(props) {
             </>
             :
             <>
-              <div className='d-flex justify-content-start align-items-center py-0'>
-                <span className='text-muted' style={{ fontSize: '12px' }}>{channelTitle}</span>
-                <span className='mx-1 d-flex align-items-center'><UilCheckCircle size={12} color="gray" /></span>
+              <div className='d-flex flex-column justify-content-start py-0'>
+                <div className='d-flex pt-2 align-items-center border'>
+                  <span className='text-muted' style={{ fontSize: '12px' }}>{channelTitle}</span>
+                  <span className='mx-1 d-flex pt-1'><UilCheckCircle size={12} color="gray" /></span>
+                </div>
                 <div style={{ fontSize: '10px' }} >
                   <span className="text-muted">{numeral(moreDetailsOfVideo?.statistics?.viewCount).format('0.a')} views</span>
                   &nbsp;

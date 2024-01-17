@@ -45,6 +45,7 @@
 /* comments */
 
 
+
 /* search result video card */
 .color-aaa{
   color: #aaa;
@@ -55,3 +56,25 @@
   border-radius: 50%;
   /* background-color: beige; */
 }
+/* search result video card */
+
+
+
+/* channel details page  */
+.channel__banner{
+  height: 200px;
+  width: 100%;
+}
+.channel__banner > span{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+/* channel details page  */
+
+
+/* Category section */
+.categories__bar{
+  overflow-x: scroll;
+}
+/* Category section */
