@@ -7,17 +7,18 @@ import { useLocation } from 'react-router-dom';
 import { GET_CHANNEL_VIDEOS } from '../redux/constants/constants';
 import Sidebar from '../Components/Sidebar';
 import Navbar from '../Components/Navbar';
+import HomeSkeletonCard from '../Components/skeletons/HomeSkeletonCard';
 
 export default function Channel() {
-  const { state : {channelData} } = useLocation();
+  const { state: { channelData } } = useLocation();
 
   const dispatch = useDispatch();
-  const {videos, loading, error} = useSelector(state => state.channelVideos);
+  const { videos, loading, error } = useSelector(state => state.channelVideos);
 
   const playlistId = channelData.contentDetails?.relatedPlaylists?.uploads
   // get the channel videos by channel's uploads
   useEffect(() => {
-    if (playlistId){
+    if (playlistId) {
       dispatch({ type: GET_CHANNEL_VIDEOS, payload: playlistId })
     }
   }, [playlistId])
@@ -25,7 +26,7 @@ export default function Channel() {
 
   return (
     <>
-       <div className='home-container'>
+      <div className='home-container'>
         <div style={{ height: '7.5vh' }}>
           <Navbar />
         </div>
@@ -46,11 +47,18 @@ export default function Channel() {
                   </React.Fragment>
                 }) : null
               }
+              {
+                true ? [...Array(20).fill(0)].map((_, index) => {
+                  return <React.Fragment key={index}>
+                    <HomeSkeletonCard />
+                  </React.Fragment> 
+                }) : null
+              }
             </div>
           </div>
         </div>
       </div>
     </>
-   
+
   )
 }

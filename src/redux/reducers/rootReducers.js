@@ -9,6 +9,7 @@ import { searchVideos } from "./searchVideosReducer";
 import { selectedVideoByVideoId } from "./selectedVideoByVideoIdReducer";
 import { channelVideosByChannelRelatedPlaylistUpload } from "./channelVideosByChannelRelatedPlaylistUploadReducer";
 import { relatedVideosByChannelId } from "./relatedVideosByChannelIdReducer";
+import { authReducer } from "./authReducer";
 
 
 export default combineReducers({ 
@@ -21,5 +22,6 @@ export default combineReducers({
     channelDetails: channelDetailsByChannelId,
     searchResult : searchVideos,
     selectedVideoDetails: selectedVideoByVideoId,
-    channelVideos: channelVideosByChannelRelatedPlaylistUpload
+    channelVideos: channelVideosByChannelRelatedPlaylistUpload,
+    auth: authReducer,
  });

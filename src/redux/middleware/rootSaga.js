@@ -8,6 +8,8 @@ import searchVideosSaga from "./searchVideosSaga";
 import selectedVideoByVideoIdSaga from "./selectedVideoByIdSaga";
 import channelVideosByChannelRelatedPlaylistUploadSaga from "./channelVideosByChannelRelatedPlaylistUploadSaga";
 import categoryVideosSaga from "./categoryVideosSaga";
+import authLoginSaga from "./auth.loginSaga";
+import authLogOutSaga from "./auth.logoutSaga";
 
 
 export default function* storeSaga(){
@@ -21,5 +23,7 @@ export default function* storeSaga(){
         fork(channelDetailsSaga),
         fork(searchVideosSaga),
         fork(channelVideosByChannelRelatedPlaylistUploadSaga),
+        fork(authLoginSaga),
+        fork(authLogOutSaga)
     ])
 }

@@ -52,6 +52,18 @@ export const GET_VIDEOS_BY_CATEGORY = "GET_VIDEOS_BY_CATEGORY";
 // export const CATEGORY_VIDEOS_FAIL = "CATEGORY_VIDEOS_FAIL";
 
 
+export const GET_LOGIN = "GET_LOGIN";
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOAD_USER_DATA = "LOAD_USER_DATA";
+
+
+export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAIL = "LOGOUT_FAIL";
+
+
 
 
 

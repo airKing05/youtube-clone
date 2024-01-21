@@ -9,6 +9,9 @@ import { useNavigate, NavLink, Link } from 'react-router-dom';
 export default function VideoCard2({ videoData }) {
     const [videosMoreDetails, setVideosMoreDetails] = useState(null);
     const [channelData, setChannelData] = useState(null);
+    const [channelDataLoading, setChannelDataLoading] = useState(false);
+    const [videoDataLoading, setVideoDataLoading] = useState(false);
+
 
     const { 
         id, 
@@ -19,6 +22,7 @@ export default function VideoCard2({ videoData }) {
 
 
     const getMoreVideosData = async (videoId) => {
+        setVideoDataLoading(true);
         const res = await apiRequest('/videos', {
             params: {
                 part: 'snippet, contentDetails, statistics',
@@ -27,6 +31,7 @@ export default function VideoCard2({ videoData }) {
         })
         const data = res.data.items[0];
         setVideosMoreDetails(data);
+        setVideoDataLoading(false)
     };
 
     useEffect(() => {
@@ -47,6 +52,7 @@ export default function VideoCard2({ videoData }) {
 
 
     const getChannelIconData = async () => {
+        setChannelDataLoading(true)
         const res = await apiRequest('/channels', {
             params: {
                 part: 'snippet,contentDetails,statistics',
@@ -54,6 +60,7 @@ export default function VideoCard2({ videoData }) {
             }
         })
         setChannelData(res.data.items[0])
+        setChannelDataLoading(false)
     };
 
     useEffect(() => {
@@ -70,7 +77,7 @@ export default function VideoCard2({ videoData }) {
     const navigate = useNavigate();
 
     const handleVideoClick = (videoId) => {
-        navigate(`/watch/${videoId}`, { state: { channelData, videoData: videosMoreDetails || videoData } });
+        navigate(`/watch/${videoId}`, { state: { channelData, channelDataLoading, videoDataLoading, videoData: videosMoreDetails || videoData } });
         // {/* onClick={() => handleVideoClick(id)} */ }
     };
 
