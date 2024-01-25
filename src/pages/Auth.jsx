@@ -9,8 +9,7 @@ import { GET_LOGIN, LOAD_USER_DATA, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, LO
 
 export default function Auth() {
     const { accessToken, loading, user: userData } = useSelector((state) => state.auth);
-    console.log("userDataasndfjkasdfjk", accessToken, userData )
-
+    
     // const [isLoggedIn, setIsLoggedIn] = useState(() => accessToken ? true : false);
 
     const navigate = useNavigate();

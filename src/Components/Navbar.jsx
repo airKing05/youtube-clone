@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UilSearch, UilYoutube, UilBars, UilTimes, UilMicrophone, UilVideo, UilBell } from '@iconscout/react-unicons';
+import DropdownPopup from './dropdownPopup/DropdownPopup';
 
 
 
 export default function Navbar() {
     const [searchQuery, setSearchQuery] = useState('');
+    const [isDropdownShow, setIsDropdownShow] = useState(false);
     const navigate = useNavigate();
 
     const handleSearch = () => {
         navigate(`/search/${searchQuery}`);
     }
     return (
+        <>
         <nav
             className='position-fixed top-0 navbarBar d-flex justify-content-between align-items-center w-100'
         >
@@ -65,7 +68,10 @@ export default function Navbar() {
                         className='position-absolute bg-danger  border rounded-circle notification__count'
                     >9+</span>
                 </div>
-                <div className='border py-2 px-3 rounded-circle ' style={{ maxWidht: '30px' }}>
+                <div
+                    onClick={() => setIsDropdownShow(!isDropdownShow)}
+                    className='border py-2 px-3 rounded-circle '
+                    style={{ maxWitdh: '30px' }}>
                     {/* <img src='https://wallpaperaccess.com/full/84977.png'
                       alt='logo'
                       className='w-auto'
@@ -74,7 +80,19 @@ export default function Navbar() {
                     A
                 </div>
             </div>
+                {/* <DropdownPopup /> */}
         </nav>
 
+        {
+                isDropdownShow ? 
+                <div 
+                        className='d-flex justify-content-end position-absolute end-0 bgColor-transparent'
+                style={{zIndex: '2', top: '7vh'}}
+                >
+                    <DropdownPopup />
+                </div>
+               : null
+        }
+        </>
     )
 }

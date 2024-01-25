@@ -1,5 +1,5 @@
 
-import { LOAD_USER_DATA, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_FAIL, LOGOUT_REQUEST } from "../constants/constants";
+import { LOAD_USER_DATA, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_FAIL, LOGOUT_REQUEST, LOGOUT_SUCCESS } from "../constants/constants";
 
 const initialSate = {
     user: sessionStorage.getItem('accessToken') ? JSON.parse(sessionStorage.getItem('userData')) : null,
@@ -20,7 +20,9 @@ export const authReducer = (state = initialSate, action) => {
 
         case LOGOUT_REQUEST:
             return { ...state, loading: true };
-        case LOGIN_SUCCESS:
+        case LOGOUT_SUCCESS:
+            sessionStorage.removeItem('accessToken');
+            sessionStorage.removeItem('userData');
             return { ...state, accessToken: null, user: null, loading: false };
         case LOGOUT_FAIL:
             return { ...state, loading: false, error: action.payload };

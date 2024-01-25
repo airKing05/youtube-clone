@@ -98,6 +98,38 @@
 /* Category section */
 
 
+
+
+.notification__count {
+  top: -9px;
+  left: 12px;
+  padding: 2px 3px;
+  font-size: 12px;
+}
+
+
+
+/* dropdown pop-up */
+.dropdown__popup {
+  width: 250px;
+  height: fit-content;
+  background-color: #282828 !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* dropdown pop-up */
+
+/* General classes */
+.bgColor-transparent {
+  background-color: transparent;
+}
+
+.text-overflow-ell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .cursor__not_allowed {
   cursor: not-allowed;
 }
@@ -106,9 +138,4 @@
   cursor: pointer;
 }
 
-.notification__count {
-  top: -9px;
-  left: 12px;
-  padding: 2px 3px;
-  font-size: 12px;
-}
+/* General classes */

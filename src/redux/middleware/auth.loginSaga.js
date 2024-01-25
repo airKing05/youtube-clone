@@ -10,15 +10,16 @@ import { auth } from "../../firebase/firebase";
 async function getDataFromGoogleSignIn(){
     const provider = new GoogleAuthProvider()
     const result = await signInWithPopup(auth, provider);
-    return result
+    return { result, provider }
 }
 
 function* signInWithGoogle(){
     try {
         yield put({ type: LOGIN_REQUEST })
-        const result = yield call(getDataFromGoogleSignIn)
+        const { result, provider } = yield call(getDataFromGoogleSignIn)
         const credential = GoogleAuthProvider.credentialFromResult(result);
-
+        // need to check the logic of scope
+        provider.addScope('https://www.googleapis.com/auth/youtube.force-ssl')
         const token = credential.accessToken;
         const user = result.user;
         yield put({ type: LOGIN_SUCCESS, payload: { token, user }})
