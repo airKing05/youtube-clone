@@ -11,6 +11,7 @@ import PlayScreen from './pages/playScreen/PlayScreen';
 import Auth from './pages/Auth';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import Subscriptions from './pages/Subscriptions';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path='/auth' element={<Auth />} exact></Route>
         <Route path='/watch/:id' element={<PlayScreen />} exact></Route>
         <Route path='/search/:query' element={<Search/>}></Route>
+        <Route path='/subscriptions' element={<Subscriptions />}></Route>
         <Route path='/favourites' element={<Favourites />}></Route>
         <Route path='/stats' element={<Stats />}></Route>
         <Route path='/channel-details/:channelId' element={<Channel/>}></Route>

@@ -8,7 +8,7 @@ export default function Sidebar() {
         {
             icon: <UilEstate size={23} color="#dee2e6" />,
             name: "Home",
-            route: '/'
+            route: "/"
         },
         {
             icon: <UilHourglass size={23} color="#dee2e6"  />,
@@ -21,6 +21,7 @@ export default function Sidebar() {
         {
             icon: <UilDataSharing size={23} color="#dee2e6" />,
             name: "Subscriptions",
+            route: "/subscriptions"
         },
     ];
 
@@ -109,10 +110,14 @@ export default function Sidebar() {
        className='d-flex flex-column justify-content-center px-4' 
       style={{ width: '240px'}}>
           <ul className='d-flex flex-column mx-2 py-2 list-unstyled gap-3'>
-              {mainLinks.map(({name, icon}) => {
+              {mainLinks.map((routes) => {
+                 const { name, icon, route } = routes;
                 return(
                     <li key={name} style={{ backgroundColor: `${name == 'Home' ? 'red' : ''}`}}>
-                        <Link to={name.route ? name.route : '#'} className='d-flex align-items-center text-decoration-none gap-4' >
+                    {
+                      console.log(route)
+                    }
+                        <Link to={route ? route : '#'} className='d-flex align-items-center text-decoration-none gap-4' >
                         {icon}
                             <span className='fw-lighter mx-2'>{name}</span>
                         </Link>

@@ -7,16 +7,22 @@ import { UilCheckCircle } from '@iconscout/react-unicons'
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_CHANNEL_DETAILS_OF_SELECTED_VIDEO, GET_SELECTED_VIDEO } from '../../redux/constants/constants';
 import { useNavigate } from 'react-router-dom';
+import { toggleShowMoreText } from '../../utils/methods/toggleShowMoreText';
 
 
 export default function ChannelHorizontalCard(props) {
-    const { snippet: { description, publishedAt, channelTitle, title, thumbnails, channelId } } = props?.channelSearchData;
+    const { snippet, contentDetails } = props?.channelResults;
     const { viewFor } = props;
+    const { description, publishedAt, channelTitle, title, thumbnails, resourceId } = snippet;
+    const { totalItemCount: totalVideoItemCount } = contentDetails && contentDetails;
 
     const [channelData, setChannelData] = useState({})
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    // for subscription channel id came from the resourceId else it will came from snippet directly
+    const channelId = (viewFor && resourceId?.channelId) ? resourceId?.channelId : snippet.channelId
 
     const formateDuration = (time) => {
         const second = moment.duration(time).asSeconds();
@@ -25,7 +31,7 @@ export default function ChannelHorizontalCard(props) {
     };
 
     const handelChannelClick = () => {
-        navigate(`/channel-details/${channelId}`, { state: { channelData }});
+        navigate(`/channel-details/${channelId}`, { state: { channelData } });
     };
 
 
@@ -46,7 +52,7 @@ export default function ChannelHorizontalCard(props) {
 
     return (
         <div
-            className='mx-3 row  py-1 cursor__pointer'
+            className={`${viewFor === 'subscription' ? 'box-shadow-89 mb-5 pt-4 pb-4' : ''} mx-3 row py-1 cursor__pointer`}
             onClick={handelChannelClick}
         >
             <div className='col-md-4 d-flex justify-content-center position-relative  m-0 p-0'>
@@ -55,10 +61,13 @@ export default function ChannelHorizontalCard(props) {
                     // src="https://i.ytimg.com/vi/JtYeYWz5RNA/mqdefault.jpg"
                     effect='blur'
                     className='rounded-circle'
-                    style={{width: '150px'}}
+                    style={{ width: '150px' }}
                 />
             </div>
-            <div className='col-md-8 pt-1'>
+            <div
+                className={`${viewFor === 'subscription' ? 'pt-sm-4 pt-md-1' : ''} col-md-8 pt-1 `}
+                style={{ marginTop: viewFor === 'subscription' && '-10px' }}
+            >
                 <div className='video-title d-flex align-items-center py-1 fs-3'>
                     {title}
                     <span className='mx-2'><UilCheckCircle size={16} color="#aaa" /></span>
@@ -77,9 +86,15 @@ export default function ChannelHorizontalCard(props) {
                         </span>
                     </div>
                     <div>
-                        <p className='fs-6 color-aaa'>
-                        {description}
+                        <p
+                            className='fs-6 color-aaa'
+                            style={toggleShowMoreText(true)}
+                        >
+                            {description}
                         </p>
+                    </div>
+                    <div className='fs-6 fw-bold'>
+                        Total videos: {totalVideoItemCount}
                     </div>
                 </div>
             </div>

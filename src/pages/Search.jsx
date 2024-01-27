@@ -68,7 +68,7 @@ export default function Search() {
                 </React.Fragment>)
               }else{
                 return (<React.Fragment key={_result.id.channelId}>
-                  <ChannelHorizontalCard channelSearchData={_result} viewFor="search" />
+                  <ChannelHorizontalCard channelResults={_result} viewFor="search" />
                   <hr/>
                 </React.Fragment>)
               }

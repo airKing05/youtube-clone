@@ -10,6 +10,7 @@ import { selectedVideoByVideoId } from "./selectedVideoByVideoIdReducer";
 import { channelVideosByChannelRelatedPlaylistUpload } from "./channelVideosByChannelRelatedPlaylistUploadReducer";
 import { relatedVideosByChannelId } from "./relatedVideosByChannelIdReducer";
 import { authReducer } from "./authReducer";
+import { subscriptionsOfAuthUserReducer } from "./subscriptionsOfAuthUserReducer";
 
 
 export default combineReducers({ 
@@ -24,4 +25,5 @@ export default combineReducers({
     selectedVideoDetails: selectedVideoByVideoId,
     channelVideos: channelVideosByChannelRelatedPlaylistUpload,
     auth: authReducer,
+    subscriptions: subscriptionsOfAuthUserReducer,
  });
