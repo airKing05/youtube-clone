@@ -8,10 +8,15 @@ import { auth } from "../../firebase/firebase";
 
 
 async function getDataFromGoogleSignIn(){
-    const provider = new GoogleAuthProvider();
-    provider.addScope('https://www.googleapis.com/auth/youtube.force-ssl')
-    const result = await signInWithPopup(auth, provider);
-    return { result, provider }
+    try {
+        const provider = new GoogleAuthProvider();
+        provider.addScope('https://www.googleapis.com/auth/youtube.force-ssl')
+        const result = await signInWithPopup(auth, provider);
+        return { result, provider }
+    } catch (error) {
+        console.log("ERROR:", error)
+    }
+   
 }
 
 function* signInWithGoogle(){
