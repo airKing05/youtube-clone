@@ -1,6 +1,8 @@
 # YouTube Clone Web App
 
-This is a fully responsive YouTube clone web application built using React, Redux, and Redux Saga. The app utilizes the YouTube Data API to fetch and display video information. The following API endpoints are used: `/videos`, `/search`, `/commentThreads`, `/channels`, and `/playlistItems`.
+This is a fully responsive YouTube clone web application built using React, Redux, and Redux Saga. The app utilizes the YouTube Data API to fetch and display video information. The following API endpoints are used: `/videos`, `/search`, `/commentThreads`, `/channels`, `/subscriptions` and `/playlistItems`.
+
+&nbsp;
 
 ## Features
 
@@ -30,6 +32,16 @@ This is a fully responsive YouTube clone web application built using React, Redu
 - Allows users to search for channels and videos.
 - Displays search results with relevant information.
 
+### Authentication
+
+- Utilizes Firebase Authentication.
+- Users are prompted to authenticate through Google login.
+- User information is stored in session storage.
+
+### Subscription Feature
+
+- Provides a list of channels subscribed by the logged-in user.
+
 ### Responsive Design
 
 - The application is fully responsive, ensuring a seamless experience across various devices.
@@ -46,7 +58,8 @@ Follow these steps to set up and run the project locally:
 2. Navigate to the project directory: `cd your-repo`
 3. Install dependencies: `npm install`
 4. Set up your YouTube Data API key and replace `YOUR_API_KEY` in the code with your actual API key.
-5. Run the app: `npm start`
+5. Set up Firebase Authentication and replace the relevant configuration details in the code.
+6. Run the app: `npm start`
 
 ## Dependencies
 
@@ -59,6 +72,7 @@ Follow these steps to set up and run the project locally:
 - React Lazy Load Image Component
 - React Infinite Scroll Component
 - React Loading Skeleton
+- Firebase
 
 ## Usage
 
@@ -67,6 +81,8 @@ Follow these steps to set up and run the project locally:
 - Explore the channel page for comprehensive channel details.
 - Utilize the category bar to filter videos by keywords.
 - Search for channels and videos on the search screen.
+- Authenticate through Google login for a personalized experience.
+- Access the subscription feature to view subscribed channels.
 
 ## Contributing
 
@@ -80,3 +96,4 @@ This project is licensed under the [MIT License](LICENSE.md).
 
 - Special thanks to the YouTube Data API for providing the necessary data for this project.
 - Appreciation to the React, Redux, and Redux Saga communities for their excellent tools and documentation.
+- Firebase for providing authentication and real-time database capabilities.
