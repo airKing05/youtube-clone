@@ -33,13 +33,13 @@ export default function Channel() {
         <div style={{ height: '92.5vh' }}>
           <Sidebar />
         </div>
-        <div className='container home-video-container position-absolute'>
+        <div className=' home-video-container position-absolute'>
           <div className=''>
             {
               channelData ? <ChannelSummary channelData={channelData} /> : <h4 className='fs-4 text-danger'>Search Channel Name</h4>
             }
             <h4 className='fs-4 fw-normal text-uppercase mt-5 mb-3'>All videos</h4>
-            <div className='row'>
+            <div className='row d-flex flex-wrap'>
               {
                 !loading ? videos.map((video) => {
                   return <React.Fragment key={video.id}>

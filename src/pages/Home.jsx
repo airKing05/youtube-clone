@@ -43,9 +43,9 @@ export default function Home() {
                     next={fetchData}
                     hasMore={true}
                     loader={
-                        <div className='spinner-border text-primary position-absolute d-flex  top-100' style={{ left: '40%' }}></div>
+                        <div className='spinner-border text-primary position-absolute d-flex top-100' style={{ left: '40%' }}></div>
                     }
-                    className="row"
+                    className="row d-flex flex-wrap  mx-1"
                 >
                     {
                         mostPopularVideos.loading ?

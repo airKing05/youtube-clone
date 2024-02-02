@@ -27,7 +27,7 @@ export default function Subscriptions() {
             </div>
             <div className='home-video-container searchPage__container position-absolute px-3'>
                 {
-                    loading ?  [...Array(20)].map((_, index) => <React.Fragment key={index}> <HomeSkeletonCard /> </React.Fragment>)
+                    loading ? [...Array(20)].map((_, index) => <React.Fragment key={index}> <HomeSkeletonCard view="lg"/> </React.Fragment>)
                     : 
                         subscriptionsOfAuthUser.map((subscription)=> {
                             return <React.Fragment key={subscription.id}>

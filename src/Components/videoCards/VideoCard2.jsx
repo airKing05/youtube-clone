@@ -86,8 +86,8 @@ export default function VideoCard2({ videoData }) {
         <>
             <div
                 onClick={() => handleVideoClick(videoIdForNavigateToPlayScreen)}
-                className='col-md-3 col-ms-4 position-relative my-3 mx-2'
-                style={{ maxWidth: '200px', padding: '1px', cursor: 'pointer' }}>
+                className='col-md-3 position-relative my-3 mx-2'
+                style={{ padding: '1px', cursor: 'pointer' }}>
                 <div className='position-relative'>
                     <LazyLoadImage
                         src={medium.url}

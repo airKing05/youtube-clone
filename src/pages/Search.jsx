@@ -11,6 +11,7 @@ import Sidebar from '../Components/Sidebar';
 import { GET_SEARCH_VIDEOS } from '../redux/constants/constants';
 import VideoCardHorizontal from '../Components/videoCards/VideoCardHorizontal';
 import ChannelHorizontalCard from '../Components/channel/ChannelHorizontalCard';
+import HomeSkeletonCard from '../Components/skeletons/HomeSkeletonCard';
 
 export default function Search() {
   const [list, setList] = useState([])
@@ -61,7 +62,7 @@ export default function Search() {
         </div>
         <div className='home-video-container searchPage__container position-absolute '>
           {
-            !loading ? searchResult?.map((_result, index) => {
+           !loading ? searchResult?.map((_result, index) => {
               if (_result.id.kind === "youtube#video"){
                 return (<React.Fragment key={_result.id.videoId}>
                   <VideoCardHorizontal videoData={_result} viewFor="search" />
@@ -73,7 +74,8 @@ export default function Search() {
                 </React.Fragment>)
               }
              
-            }) : <h4>loading...</h4>
+            }) : 
+              [...Array(20)].map((_, index) => <React.Fragment key={index}> <HomeSkeletonCard view="lg" /> </React.Fragment>)
           }
         </div>
 

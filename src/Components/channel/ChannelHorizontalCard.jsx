@@ -14,7 +14,6 @@ export default function ChannelHorizontalCard(props) {
     const { snippet, contentDetails } = props?.channelResults;
     const { viewFor } = props;
     const { description, publishedAt, channelTitle, title, thumbnails, resourceId } = snippet;
-    const { totalItemCount: totalVideoItemCount } = contentDetails && contentDetails;
 
     const [channelData, setChannelData] = useState({})
 
@@ -82,7 +81,7 @@ export default function ChannelHorizontalCard(props) {
                         &#x2022;
                         &nbsp;
                         <span className="text-muted">
-                            {numeral(channelData?.statistics?.subscriberCount).format('0.a').toUpperCase()} K subscribers
+                            {numeral(channelData?.statistics?.subscriberCount).format('0.a').toUpperCase()} subscribers
                         </span>
                     </div>
                     <div>
@@ -93,9 +92,12 @@ export default function ChannelHorizontalCard(props) {
                             {description}
                         </p>
                     </div>
-                    <div className='fs-6 fw-bold'>
-                        Total videos: {totalVideoItemCount}
-                    </div>
+                    {
+                        contentDetails?.totalVideoItemCount ? <div className='fs-6 fw-bold'>
+                            Total videos: {contentDetails?.totalVideoItemCount}
+                        </div> : null
+                    }
+                   
                 </div>
             </div>
 
