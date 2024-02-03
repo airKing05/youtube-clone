@@ -26,7 +26,7 @@ export default function Channel() {
 
   return (
     <>
-      <div className='home-container'>
+      {/* <div className='home-container'>
         <div style={{ height: '7.5vh' }}>
           <Navbar />
         </div>
@@ -57,7 +57,26 @@ export default function Channel() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+
+        {
+          channelData ? <ChannelSummary channelData={channelData} /> : <h4 className='fs-4 text-danger'>Search Channel Name</h4>
+        }
+        <h4 className='fs-4 fw-normal text-uppercase mt-5 mb-3'>All videos</h4>
+        <div className='row d-flex flex-wrap'>
+          {
+            !loading ? videos.map((video) => {
+              return <React.Fragment key={video.id}>
+                <VideoCard2 videoData={video} />
+              </React.Fragment>
+            }) : [...Array(20).fill(0)].map((_, index) => {
+              return <React.Fragment key={index}>
+                <HomeSkeletonCard />
+              </React.Fragment>
+            })
+          }
+        </div>
+ 
     </>
 
   )

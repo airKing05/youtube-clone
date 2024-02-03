@@ -29,15 +29,22 @@ export default function Home() {
     };
 
     return (
-        <div className='home-container '>
-            <div style={{ height: '7.5vh' }}>
-                <Navbar />
-            </div>
-            <div style={{ height: '92.5vh' }}>
-                <Sidebar />
-            </div>
-            <div className='home-video-container position-absolute margin-inline-auto'>
-                <CategorySectionBar />
+        // <div className='home-container '>
+        //     <div style={{ height: '7.5vh' }}>
+        //         <Navbar />
+        //     </div>
+        //     <div style={{ height: '92.5vh' }}>
+        //         <Sidebar />
+        //     </div>
+        //     <div className='home-video-container position-absolute margin-inline-auto'>
+               
+        //     </div>
+
+
+        // </div>
+
+        <>
+             <CategorySectionBar />
                 <InfiniteScroll
                     dataLength={mostPopularVideos.videos.length}
                     next={fetchData}
@@ -53,9 +60,6 @@ export default function Home() {
                             : mostPopularVideos.videos.map((video) => <VideoCard2 key={video.id} videoData={video} />)
                     }
                 </InfiniteScroll>
-            </div>
-
-
-        </div>
+        </>
     )
 }

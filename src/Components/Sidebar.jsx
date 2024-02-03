@@ -108,15 +108,12 @@ export default function Sidebar() {
   return (
       <div
        className='d-flex flex-column justify-content-center px-4' 
-      style={{ width: '240px'}}>
+       style={{ width: '240px'}}>
           <ul className='d-flex flex-column mx-2 py-2 list-unstyled gap-3'>
               {mainLinks.map((routes) => {
                  const { name, icon, route } = routes;
                 return(
                     <li key={name} style={{ backgroundColor: `${name == 'Home' ? 'red' : ''}`}}>
-                    {
-                      console.log(route)
-                    }
                         <Link to={route ? route : '#'} className='d-flex align-items-center text-decoration-none gap-4' >
                         {icon}
                             <span className='fw-lighter mx-2'>{name}</span>

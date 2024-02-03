@@ -18,25 +18,36 @@ export default function Subscriptions() {
     }, [accessToken])
 
     return (
-        <div className='home-container '>
-            <div style={{ height: '10vh' }} className=''>
-                <Navbar />
-            </div>
-            <div style={{ height: '90vh', overflowY: 'auto' }} className=''>
-                <Sidebar />
-            </div>
-            <div className='home-video-container searchPage__container position-absolute px-3'>
-                {
-                    loading ? [...Array(20)].map((_, index) => <React.Fragment key={index}> <HomeSkeletonCard view="lg"/> </React.Fragment>)
-                    : 
-                        subscriptionsOfAuthUser.map((subscription)=> {
-                            return <React.Fragment key={subscription.id}>
-                                <ChannelHorizontalCard channelResults={subscription} viewFor="subscription" />
-                            </React.Fragment>
-                        })
-                }
-              
-            </div>
-        </div>
+        <>
+            {/* <div className='home-container '>
+                <div style={{ height: '10vh' }} className=''>
+                    <Navbar />
+                </div>
+                <div style={{ height: '90vh', overflowY: 'auto' }} className=''>
+                    <Sidebar />
+                </div>
+                <div className='home-video-container searchPage__container position-absolute px-3'>
+                    {
+                        loading ? [...Array(20)].map((_, index) => <React.Fragment key={index}> <HomeSkeletonCard view="lg" /> </React.Fragment>)
+                            :
+                            subscriptionsOfAuthUser.map((subscription) => {
+                                return <React.Fragment key={subscription.id}>
+                                    <ChannelHorizontalCard channelResults={subscription} viewFor="subscription" />
+                                </React.Fragment>
+                            })
+                    }
+
+                </div>
+            </div> */}
+            {
+                loading ? [...Array(20)].map((_, index) => <React.Fragment key={index}> <HomeSkeletonCard view="lg" /> </React.Fragment>)
+                    :
+                    subscriptionsOfAuthUser.map((subscription) => {
+                        return <React.Fragment key={subscription.id}>
+                            <ChannelHorizontalCard channelResults={subscription} viewFor="subscription" />
+                        </React.Fragment>
+                    })
+            }
+        </>
     )
 }

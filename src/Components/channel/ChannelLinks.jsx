@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { UilShare, UilThumbsUp, UilThumbsDown, UilImport } from '@iconscout/react-unicons';
 import numeral from 'numeral';
 import { useDispatch, useSelector } from 'react-redux';
-import { GET_CHANNEL_DETAILS_OF_SELECTED_VIDEO } from '../../redux/constants/constants';
+import { GET_CHANNEL_DETAILS_OF_SELECTED_VIDEO, GET_CHANNEL_SUBSCRIPTIONS_STATUS } from '../../redux/constants/constants';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { getAccessTokenFromWebStorage } from '../../utils/methods/getAccessTokenFromWebStorage.js'
 import OneLineSkeleton from '../skeletons/OneLineSkeleton';
 
 const menuIconSvg = <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,14 +14,18 @@ const menuIconSvg = <svg width="30px" height="30px" viewBox="0 0 24 24" fill="no
 
 export default function ChannelLinks({ videoData, channelData, channelDataLoading, videoDataLoading }) {
   const dispatch = useDispatch();
-  // const { channelDetails, loading, error } = useSelector(state => state.channelDetails);
+  const { channelDetails, isSubscribed, loading, error } = useSelector(state => state.channelDetails);
 
-  const { snippet, statistics } = channelData;
+  const { snippet, statistics } = channelData && channelData;
   const { snippet: { channelId }, statistics: { likeCount } } = videoData;
 
   // useEffect(() => {
   //   dispatch({ type: GET_CHANNEL_DETAILS_OF_SELECTED_VIDEO, payload: channelId })
   // }, [channelId])
+
+  useEffect(() => {
+    dispatch({ type: GET_CHANNEL_SUBSCRIPTIONS_STATUS, payload: { channelId, accessToken: getAccessTokenFromWebStorage() } })
+  }, [channelId])
 
   return (
     <div className='my-3 d-flex flex-row justify-content-between align-items-center'>
@@ -63,18 +68,24 @@ export default function ChannelLinks({ videoData, channelData, channelDataLoadin
         <div className='d-flex justify-content-between' style={{ fontSize: '12px' }}>
           {!videoDataLoading ? <>
             <span className='border bg-dark py-1 px-2 rounded-pill fw-bold'>Join</span> &nbsp; &nbsp;
-            <span className='border bg-dark py-1 px-2 rounded-pill fw-bold text-dark bg-white'>Subscribe</span>
-         </>
+            <span
+              className={`${!isSubscribed ? 'bg-white text-dark' : 'text-white dark-shaded_bg'} border py-1 px-2 rounded-pill fw-bold`}
+            >
+              {
+                isSubscribed ? 'Subscribed' : 'Subscribe'
+              }
+            </span>
+          </>
             : <div className='me-2' style={{
               width: '10vw'
             }}>
               <OneLineSkeleton />
             </div>
-         }
+          }
         </div>
       </div>
       <div className='d-flex flex-row align-items-center' style={{ fontSize: '12px' }}>
-       {
+        {
           !videoDataLoading ?
             <>
               <div className='border py-1 px-2 rounded-pill mx-1 align-middle' >
@@ -92,14 +103,14 @@ export default function ChannelLinks({ videoData, channelData, channelDataLoadin
                 {menuIconSvg}
               </div>
             </>
-            : 
+            :
             <div className='me-2' style={{
               width: '30vw'
             }}>
               <OneLineSkeleton />
             </div>
-           
-       }
+
+        }
       </div>
     </div>
   )

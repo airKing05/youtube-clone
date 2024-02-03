@@ -1,7 +1,7 @@
 import videoDataSaga from "./videosSaga";
 import mostPopularVideoSaga from "./mostPopulareVideosSaga";
 import { all, fork } from "redux-saga/effects";
-import videoCommentsSaga from "./videoCommnetsSaga";
+// import videoCommentsSaga from "./videoCommnetsSaga";
 import relatedVideosSaga from "./relatedVideosSaga";
 import channelDetailsSaga from "./channelDetailsByChannelId";
 import searchVideosSaga from "./searchVideosSaga";
@@ -11,6 +11,8 @@ import categoryVideosSaga from "./categoryVideosSaga";
 import authLoginSaga from "./auth.loginSaga";
 import authLogOutSaga from "./auth.logoutSaga";
 import subscriptionsOfAuthUserSaga from "./subscriptionsOfAuthUserSaga";
+import subscriptionStatusOfChannelByChannelIdSaga from "./susbscriptionStatusOfChannelByChannelIdSaga";
+import { addCommentsOfSelectedVideoSaga, getCommentsOfSelectedVideoSaga } from "./videoCommentsSaga";
 
 
 export default function* storeSaga(){
@@ -19,7 +21,8 @@ export default function* storeSaga(){
         fork(mostPopularVideoSaga),
         fork(categoryVideosSaga),
         fork(selectedVideoByVideoIdSaga),
-        fork(videoCommentsSaga),
+        fork(getCommentsOfSelectedVideoSaga),
+        fork(addCommentsOfSelectedVideoSaga),
         fork(relatedVideosSaga),
         fork(channelDetailsSaga),
         fork(searchVideosSaga),
@@ -27,5 +30,6 @@ export default function* storeSaga(){
         fork(authLoginSaga),
         fork(authLogOutSaga),
         fork(subscriptionsOfAuthUserSaga),
+        fork(subscriptionStatusOfChannelByChannelIdSaga),
     ])
 }

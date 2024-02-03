@@ -48,9 +48,9 @@ export default function PlayScreen() {
 
     return (
         <div>
-            <div className='mb-5 pb-5'>
+            {/* <div className='mb-5 pb-5'>
                 <Navbar />
-            </div>
+            </div> */}
             <div className='m-4'>
                 <div className='row m-2'>
                     <div className='col-md-8  p-0'>

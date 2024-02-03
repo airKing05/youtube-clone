@@ -53,7 +53,7 @@ export default function Search() {
 
   return (
     <>
-      <div className='home-container'>
+      {/* <div className='home-container'>
         <div style={{ height: '10vh' }} className=''>
           <Navbar />
         </div>
@@ -78,11 +78,24 @@ export default function Search() {
               [...Array(20)].map((_, index) => <React.Fragment key={index}> <HomeSkeletonCard view="lg" /> </React.Fragment>)
           }
         </div>
+      </div> */}
 
-        {/* <VideoCardHorizontal viewFor="search" /> */}
+      {
+        !loading ? searchResult?.map((_result, index) => {
+          if (_result.id.kind === "youtube#video") {
+            return (<React.Fragment key={_result.id.videoId}>
+              <VideoCardHorizontal videoData={_result} viewFor="search" />
+            </React.Fragment>)
+          } else {
+            return (<React.Fragment key={_result.id.channelId}>
+              <ChannelHorizontalCard channelResults={_result} viewFor="search" />
+              <hr />
+            </React.Fragment>)
+          }
 
-
-      </div>
+        }) :
+          [...Array(20)].map((_, index) => <React.Fragment key={index}> <HomeSkeletonCard view="lg" /> </React.Fragment>)
+      }
     </>
   )
 }

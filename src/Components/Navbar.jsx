@@ -5,7 +5,8 @@ import DropdownPopup from './dropdownPopup/DropdownPopup';
 
 
 
-export default function Navbar() {
+export default function Navbar(props) {
+    const { setSidebarVisible } = props;
     const [searchQuery, setSearchQuery] = useState('');
     const [isDropdownShow, setIsDropdownShow] = useState(false);
     const navigate = useNavigate();
@@ -13,13 +14,16 @@ export default function Navbar() {
     const handleSearch = () => {
         navigate(`/search/${searchQuery}`);
     }
+    const handleShowSidebar = () => {
+        setSidebarVisible((preState) => !preState);
+    }
     return (
         <>
         <nav
             className='position-fixed top-0 navbarBar d-flex justify-content-between align-items-center w-100'
         >
             <div className='d-flex align-items-center'>
-                <div className='cursor__pointer'>
+                    <div className='cursor__pointer' onClick={handleShowSidebar}>
                     <UilBars color="#dee2e6" size={30} />
                 </div>
                 <Link to="/" className='text-decoration-none'>

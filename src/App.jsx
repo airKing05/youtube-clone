@@ -12,6 +12,7 @@ import Auth from './pages/Auth';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Subscriptions from './pages/Subscriptions';
+import MainLayout from './layouts/MainLayout';
 
 
 function App() {
@@ -27,16 +28,40 @@ function App() {
 
   return (
     <div className="App">
-     <Routes>
-        <Route path='/' element={<Home />} exact></Route>
+      <Routes>
+        <Route path='/' element={
+          <MainLayout>
+            <Home />
+          </MainLayout>
+        } exact>
+        </Route>
         <Route path='/auth' element={<Auth />} exact></Route>
-        <Route path='/watch/:id' element={<PlayScreen />} exact></Route>
-        <Route path='/search/:query' element={<Search/>}></Route>
-        <Route path='/subscriptions' element={<Subscriptions />}></Route>
+        <Route path='/watch/:id' element={
+          <MainLayout componentName="playScreen">
+            <PlayScreen />
+          </MainLayout>
+        } exact>
+        </Route>
+        <Route path='/search/:query' element={
+          <MainLayout>
+            <Search />
+          </MainLayout>
+        }></Route>
+        <Route path='/subscriptions' element={
+          <MainLayout>
+            <Subscriptions />
+          </MainLayout>
+        }>
+        </Route>
         <Route path='/favourites' element={<Favourites />}></Route>
         <Route path='/stats' element={<Stats />}></Route>
-        <Route path='/channel-details/:channelId' element={<Channel/>}></Route>
-     </Routes>
+        <Route path='/channel-details/:channelId' element={
+          <MainLayout>
+            <Channel />
+          </MainLayout>
+        }>
+        </Route>
+      </Routes>
     </div>
   );
 }

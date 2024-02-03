@@ -1,3 +1,11 @@
+/* color variable section */
+:root {
+  --dark-shaded-bg-color: #282828;
+  --primary-shaded-bg-color: #3ea6ff;
+  --dark-shaded-text-color: #717171;
+}
+/* color variable section */
+
 .navbarBar {
   height: 35px;
   padding: 40px 20px;
@@ -31,14 +39,19 @@
   border-bottom-right-radius: 20px;
 }
 
-.home-video-container {
+.mainContent__container {
+  width: 78vw;
+  height: 90vh;
   top: 90px;
   left: 250px;
   overflow-y: auto;
 }
-
-.searchPage__container {
-  width: 78vw;
+.mainContent__container--sidebarHidden{
+    width: 100vw;
+    height: 90vh;
+    top: 90px;
+    left: 0px;
+    overflow-y: auto;
 }
 
 /*  Home vide card title Video */
@@ -113,7 +126,7 @@
 .dropdown__popup {
   width: 250px;
   height: fit-content;
-  background-color: #282828 !important;
+  background-color: var(--dark-shaded-bg-color) !important;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -152,6 +165,16 @@
 .box-shadow-21{
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
+
+.dark-shaded_bg{
+  background-color: var(--dark-shaded-bg-color);
+}
+.dark-shaded_text {
+  color: var(--dark-shaded-text-color);
+}
+.primary-shaded_bg {
+  background-color: var(--primary-shaded-bg-color);
+}
 /* General classes */
 
 /* Skeleton card */
@@ -160,3 +183,18 @@
 }
 
 /* Skeleton card */
+
+
+/* comment section */
+.commentInput input{
+  outline: 0;
+  border-bottom: 1px solid antiquewhite;
+}
+.commentInput input:focus {
+  outline: none;
+  /* border-bottom: 2px solid antiquewhite; */
+}
+.cancelBtn:hover{
+  background-color: var(--dark-shaded-bg-color);
+}
+/* comment section */
