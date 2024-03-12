@@ -10,7 +10,7 @@ export default function MainLayout(props) {
 
 
   return (
-      <div className='home-container'>
+      <div className='main_layout__container'>
           <div style={{ height: '10vh' }} className=''>
               <Navbar setSidebarVisible={setSidebarVisible}  />
           </div>
@@ -20,7 +20,7 @@ export default function MainLayout(props) {
               </div> : null
           }
         
-          <div className={`${isSidebarVisible ? 'mainContent__container' : 'mainContent__container--sidebarHidden'} position-absolute px-3`}>
+          <div className={`${isSidebarVisible ? 'mainContent__container' : 'mainContent__container--sidebarHidden'} position-absolute px-2 pe-0 mx-2`}>
               {children}
           </div>
       </div>

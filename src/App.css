@@ -39,15 +39,27 @@
   border-bottom-right-radius: 20px;
 }
 
+
+@media screen and (max-width: 500px){
+  .desktop-view{
+    display: none !important;
+  }
+}
+@media screen and (min-width: 501px) {
+  .mobile-view{
+    display: none !important;
+  }
+}
+
 .mainContent__container {
-  width: 78vw;
+  /* width: 78vw; */
   height: 90vh;
   top: 90px;
   left: 250px;
   overflow-y: auto;
 }
 .mainContent__container--sidebarHidden{
-    width: 100vw;
+    /* width: 100vw; */
     height: 90vh;
     top: 90px;
     left: 0px;
@@ -186,9 +198,12 @@
 
 
 /* comment section */
-.commentInput input{
+.commentInput input {
   outline: 0;
   border-bottom: 1px solid antiquewhite;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
 }
 .commentInput input:focus {
   outline: none;
@@ -198,3 +213,11 @@
   background-color: var(--dark-shaded-bg-color);
 }
 /* comment section */
+
+.main_layout__container{
+  box-sizing: border-box;
+}
+
+.horizontal_video_card_container{
+  width: 99%;
+}

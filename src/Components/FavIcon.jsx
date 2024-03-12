@@ -3,12 +3,12 @@ import { UilHeartAlt} from '@iconscout/react-unicons';
 
 
 export default function FavIcon(props) {
-  //console.log(props)
+  const { handleAddToFavorite } = props;
   return (
     <span 
     className='btn border-none p-0' 
       style={{ background: `${props.bgColor}`}} 
-    onClick={props.clickHandler}
+      onClick={handleAddToFavorite}
     ><UilHeartAlt color="#fff" size ={25}/></span>
   )
 }

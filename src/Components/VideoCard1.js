@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 //import { DateTime } from "luxon";
 import { UilCheckCircle } from '@iconscout/react-unicons';
 import FavIcon from "./FavIcon";
-import { addToFavourite, removeToFavourite } from "../redux/actions/favouriteActions";
+import {  addToFavorite, removeToFavorite } from "../redux/actions/favoriteActions";
 import { useDispatch } from "react-redux";
 import { UilHeartAlt } from '@iconscout/react-unicons';
 
@@ -44,11 +44,11 @@ export default function VideoCard1({ videoData, isDeleteActionEnabled }) {
     const manageFavouriteVideo = (action_type) => {
         switch (action_type) {
             case 'ADD':
-                dispatch(addToFavourite(dataToFav ))
+                dispatch(addToFavorite(dataToFav ))
                 //dispatch(addToFavourite(statistics))
                 break;
             case 'DELETE':
-                dispatch(removeToFavourite(videoId))
+                dispatch(removeToFavorite(videoId))
                 break;
             default:
                 break;

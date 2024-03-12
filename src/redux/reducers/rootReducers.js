@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { favouriteVideosList } from "./favouriteReducers";
+import { favoriteVideosList } from "./favoriteReducers";
 import { videosData } from "./videosReducers";
 import { channelData } from "./channelReducers";
 import mostPopularVideos from "./mostPopulareVideosReducer";
@@ -14,7 +14,7 @@ import { subscriptionsOfAuthUserReducer } from "./subscriptionsOfAuthUserReducer
 
 
 export default combineReducers({ 
-    favouriteVideosList, 
+    favoriteVideosList, 
     videosData, 
     channelData,
     mostPopularVideos: mostPopularVideos,

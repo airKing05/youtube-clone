@@ -81,7 +81,12 @@ export default function VideoCard2({ videoData }) {
         // {/* onClick={() => handleVideoClick(id)} */ }
     };
 
+    const handleAddToFavorite = (e) => {
+        e.stopPropagation()
+    }
+
     const videoIdForNavigateToPlayScreen = id?.videoId ? id.videoId : contentDetails?.videoId ? contentDetails?.videoId : id
+    
     return (
         <>
             <div
@@ -95,7 +100,10 @@ export default function VideoCard2({ videoData }) {
                         className='img-fluid' style={{ borderRadius: '12px' }}
                     />
                     <span className='bg-dark px-1 position-absolute rounded' style={{ top: '80%', right: '2%', fontSize: '12px' }}>{formateDuration(contentDetails?.duration || videosMoreDetails?.contentDetails?.duration)}</span>
-                    <span className="position-absolute" style={{ top: '1%', right: '7%' }}><FavIcon /></span>
+                    <span className="position-absolute" style={{ top: '1%', right: '7%' }}>
+                    <FavIcon 
+                        handleAddToFavorite={(e) => handleAddToFavorite(e)}
+                    /></span>
                 </div>
                 <div className='row my-auto mt-2 p-0 ms-n-2'>
                     <div className='col-3 position-relative'>

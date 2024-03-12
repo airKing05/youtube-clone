@@ -62,7 +62,7 @@ export default function VideoCardHorizontal(props) {
 
   return (
     <div
-      className={`${viewFor === 'search' ? 'mx-3 py-1' : 'mx-3 ps-2 py-2'} row cursor__pointer`}
+      className={`${viewFor === 'search' ? 'mx-3 py-1' : 'mx-3 ps-2 py-2'} row cursor__pointer horizontal_video_card_container mb-2`}
       onClick={handleVideoClick}
     >
       <div className='col-md-4 position-relative m-0 p-0'>
