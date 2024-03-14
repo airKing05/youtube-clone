@@ -41,6 +41,7 @@ export default function Sidebar() {
         {
             icon: <UilClock size={23} color="#dee2e6" />,
             name: "Watch Later",
+            route: "/favourites"
         },
         {
             icon: <UilThumbsUp size={23} color="#dee2e6" />,
@@ -125,10 +126,11 @@ export default function Sidebar() {
           <div className='d-flex border-bottom border-1 mb-2 border-success border-opacity-50'>
           </div>
           <ul className='d-flex flex-column mx-2  py-2 list-unstyled gap-3'>
-              {secondaryLinks.map(({ name, icon }) => {
+              {secondaryLinks.map((routes) => {
+                  const { name, icon, route } = routes;
                   return (
                       <li key={name} >
-                          <Link to="#" className='d-flex align-items-center text-decoration-none gap-4 cursor__not_allowed' >
+                          <Link to={route ? route : '#'} className='d-flex align-items-center text-decoration-none gap-4' >
                               {icon}
                                <span className='fw-lighter mx-2'>{name}</span>
                           </Link>

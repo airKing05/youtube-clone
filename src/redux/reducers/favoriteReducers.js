@@ -8,7 +8,7 @@ export const favoriteVideosList = (state = initialSate, action) =>{
             localStorage.setItem('favorite', JSON.stringify([action.payload, ...state]));
             return [action.payload, ...state];
         case REMOVE_FROM_FAVORITE: 
-            let remainingVideos = state.filter((video)=> video[0].videoData.id.videoId !== action.payload)
+            let remainingVideos = state.filter((video) => video.id !== action.payload)
             localStorage.setItem('favorite', JSON.stringify([...remainingVideos]));
             return [...remainingVideos];
         default:

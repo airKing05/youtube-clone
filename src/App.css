@@ -52,14 +52,14 @@
 }
 
 .mainContent__container {
-  /* width: 78vw; */
+  width: 78vw;
   height: 90vh;
   top: 90px;
   left: 250px;
   overflow-y: auto;
 }
 .mainContent__container--sidebarHidden{
-    /* width: 100vw; */
+    width: 100vw;
     height: 90vh;
     top: 90px;
     left: 0px;
@@ -117,7 +117,9 @@
 /* Category section */
 .categories__bar {
   overflow-x: scroll;
-  width: 78vw;
+  /* width: ; */
+  width: 92vw;
+  /* width: 100%; */
 }
 
 /* Category section */
@@ -220,4 +222,8 @@
 
 .horizontal_video_card_container{
   width: 99%;
+}
+
+.video_card_2 .row{
+  --bs-gutter-x: 0rem;
 }

@@ -45,21 +45,27 @@ export default function Home() {
 
         <>
              <CategorySectionBar />
-                <InfiniteScroll
+                {/* <InfiniteScroll
                     dataLength={mostPopularVideos.videos.length}
                     next={fetchData}
                     hasMore={true}
                     loader={
                         <div className='spinner-border text-primary position-absolute d-flex top-100' style={{ left: '40%' }}></div>
                     }
-                    className="row d-flex flex-wrap  mx-1"
+                    // className="row d-flex flex-wrap border  mx-1"
+                > */}
+                <div
+                className="row d-flex flex-wrap  mx-1 pe-3"
                 >
+
+               
                     {
                         mostPopularVideos.loading ?
                             [...Array(20)].map((_, index) => <React.Fragment key={index}> <HomeSkeletonCard /> </React.Fragment>)
                             : mostPopularVideos.videos.map((video) => <VideoCard2 key={video.id} videoData={video} />)
                     }
-                </InfiniteScroll>
+            </div>
+                {/* </InfiniteScroll> */}
         </>
     )
 }

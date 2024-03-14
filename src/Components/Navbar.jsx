@@ -91,7 +91,7 @@ export default function Navbar(props) {
                     </div> : null
             }
             {
-                    !isSearchInputShow ? <div className='search_section mobile-view'>
+                    !isSearchInputShow ? <div className='search_section d-flex mobile-view'>
                         <div className='d-flex align-items-center position-relative mx-3'>
                             <UilBell />
                             <span
@@ -109,6 +109,7 @@ export default function Navbar(props) {
                         <UilArrowLeft onClick={() => setIsSearchInputShow(false)} />
                         <input
                             type="text"
+                            placeholder='Search Youtube'
                             className="input-data border rounded-pill py-2 px-3"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}

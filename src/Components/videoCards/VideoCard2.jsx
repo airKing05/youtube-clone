@@ -5,6 +5,8 @@ import apiRequest from '../../api';
 import FavIcon from '../FavIcon';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useNavigate, NavLink, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToFavorite } from '../../redux/actions/favoriteActions';
 
 export default function VideoCard2({ videoData }) {
     const [videosMoreDetails, setVideosMoreDetails] = useState(null);
@@ -19,6 +21,8 @@ export default function VideoCard2({ videoData }) {
         statistics, 
         contentDetails 
     } = videoData;
+
+    const dispatch = useDispatch();
 
 
     const getMoreVideosData = async (videoId) => {
@@ -82,7 +86,9 @@ export default function VideoCard2({ videoData }) {
     };
 
     const handleAddToFavorite = (e) => {
-        e.stopPropagation()
+        e.stopPropagation();
+        dispatch(addToFavorite(videoData))
+
     }
 
     const videoIdForNavigateToPlayScreen = id?.videoId ? id.videoId : contentDetails?.videoId ? contentDetails?.videoId : id
@@ -91,38 +97,45 @@ export default function VideoCard2({ videoData }) {
         <>
             <div
                 onClick={() => handleVideoClick(videoIdForNavigateToPlayScreen)}
-                className='col-md-3 position-relative my-3 mx-2'
-                style={{ padding: '1px', cursor: 'pointer' }}>
-                <div className='position-relative'>
-                    <LazyLoadImage
-                        src={medium.url}
-                        effect='blur'
-                        className='img-fluid' style={{ borderRadius: '12px' }}
-                    />
-                    <span className='bg-dark px-1 position-absolute rounded' style={{ top: '80%', right: '2%', fontSize: '12px' }}>{formateDuration(contentDetails?.duration || videosMoreDetails?.contentDetails?.duration)}</span>
-                    <span className="position-absolute" style={{ top: '1%', right: '7%' }}>
-                    <FavIcon 
-                        handleAddToFavorite={(e) => handleAddToFavorite(e)}
-                    /></span>
-                </div>
-                <div className='row my-auto mt-2 p-0 ms-n-2'>
-                    <div className='col-3 position-relative'>
+                className='col-md-3 col-12 position-relative my-3 mx-md-4 video_card_2'
+                style={{ padding: '1px', cursor: 'pointer', minWidth: '15rem' }}>
+                {/* <div className='row'> */}
+                    <div className='position-relative'>
                         <LazyLoadImage
-                            src={channelData?.snippet.thumbnails.default.url}
-                            className='img-fluid rounded-circle'
-                            alt='thumbnail'
+                            src={medium.url}
+                            effect='blur'
+                            className='img-fluid' 
+                        style={{ borderRadius: '12px', minWidth: '15rem' }}
                         />
+                        <span className='bg-dark px-1 position-absolute rounded' style={{ bottom: '2%', right: '2%', fontSize: '12px' }}>{formateDuration(contentDetails?.duration || videosMoreDetails?.contentDetails?.duration)}</span>
+                        <span className="position-absolute" style={{ top: '1%', right: '2%' }}>
+                            <FavIcon
+                            style={{ background: 'transparent' }}
+                            handleAddToFavorite={(e) => handleAddToFavorite(e)}
+                            />
+                        </span>
                     </div>
-                    <div className='col-9 text-start text-muted p-0'>
-                        <h6 className='text-wrap video-title mb-0' >{title} </h6>
-                        <span style={{ fontSize: '12px' }} className=" text-muted">{channelTitle}</span>
-                        <div style={{ fontSize: '10px' }} >
-                            <span className="text-muted">{numeral(statistics?.viewCount ? statistics?.viewCount : videosMoreDetails?.statistics?.viewCount).format('0.a')} views</span>
-                            &#x2022;
-                            <span className="text-muted">{moment(publishedAt).fromNow()}</span>
+                  {/* <div className='row p-4 border'></div> */}
+                    <div className='row my-auto mt-2'>
+                        <div className='col-md-2 col-2 position-relative'>
+                            <LazyLoadImage
+                                src={channelData?.snippet.thumbnails.default.url}
+                                className='img-fluid rounded-circle'
+                                alt='thumbnail'
+                            />
+                        </div>
+                        <div className='col-md-9 col-10 text-start text-muted px-2'>
+                            <h6 className='text-wrap video-title mb-0' >{title} </h6>
+                            <span style={{ fontSize: '12px' }} className=" text-muted">{channelTitle}</span>
+                            <div style={{ fontSize: '10px' }} >
+                                <span className="text-muted">{numeral(statistics?.viewCount ? statistics?.viewCount : videosMoreDetails?.statistics?.viewCount).format('0.a')} views</span>
+                                &#x2022;
+                                <span className="text-muted">{moment(publishedAt).fromNow()}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
+               
             </div>
         </>
     )
